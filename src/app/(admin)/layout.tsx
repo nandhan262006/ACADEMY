@@ -1,8 +1,4 @@
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
-
-export const dynamic = "force-dynamic";
 import {
   LayoutDashboard,
   Users,
@@ -12,7 +8,6 @@ import {
   Calendar,
   Bell,
   MessageSquare,
-  LogOut,
   Settings,
 } from "lucide-react";
 
@@ -28,33 +23,13 @@ const sidebarLinks = [
   { href: "/admin/inquiries", label: "Inquiries", icon: MessageSquare },
 ];
 
-export default async function AdminLayout({
+export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect("/login");
-  }
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  if (profile?.role !== "admin") {
-    redirect("/dashboard");
-  }
-
   return (
     <div className="flex min-h-[calc(100vh-64px)]">
-      {/* Sidebar */}
       <aside className="hidden md:flex w-64 flex-col border-r bg-white">
         <div className="p-6">
           <h2 className="text-lg font-semibold text-navy">Admin Dashboard</h2>
@@ -82,7 +57,6 @@ export default async function AdminLayout({
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="flex-1 bg-gray-50 p-6">{children}</main>
     </div>
   );

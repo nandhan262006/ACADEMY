@@ -1,13 +1,6 @@
-import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
-
-export const dynamic = "force-dynamic";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import {
   Table,
@@ -17,23 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
 
-export default async function AdminCoursesPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect("/login");
-  }
-
-  const { data: courses } = await supabase
-    .from("courses")
-    .select("*")
-    .order("created_at", { ascending: false });
-
+export default function AdminCoursesPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -56,28 +34,11 @@ export default async function AdminCoursesPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {courses?.map((course) => (
-                <TableRow key={course.id}>
-                  <TableCell className="font-medium">{course.title}</TableCell>
-                  <TableCell className="font-mono text-sm">
-                    {course.slug}
-                  </TableCell>
-                  <TableCell>{course.duration_weeks} weeks</TableCell>
-                  <TableCell>₹{course.price.toLocaleString("en-IN")}</TableCell>
-                  <TableCell>
-                    <Badge
-                      variant={course.is_active ? "default" : "secondary"}
-                      className={
-                        course.is_active
-                          ? "bg-green-100 text-green-700"
-                          : "bg-gray-100 text-gray-700"
-                      }
-                    >
-                      {course.is_active ? "Active" : "Inactive"}
-                    </Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
+              <TableRow>
+                <TableCell colSpan={5} className="text-center py-8 text-gray-500">
+                  No courses created yet.
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </CardContent>

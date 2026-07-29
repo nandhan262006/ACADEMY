@@ -42,9 +42,9 @@ const teachingPoints = [
 ];
 
 const curriculumCards = [
-  { title: "Theory & Fundamentals", desc: "Learn exposure triangle, metering modes, white balance, and focusing techniques." },
-  { title: "Practical Shooting", desc: "Indoor and outdoor lighting, tabletop photography, and hands-on shooting assignments." },
-  { title: "Post-Processing", desc: "Retouching in Photoshop, colour grading in Lightroom, and video editing in Premiere Pro." },
+  { title: "Theory & Fundamentals", desc: "Learn exposure triangle, metering modes, white balance, and focusing techniques.", image: "/images/theory.png" },
+  { title: "Practical Shooting", desc: "Indoor and outdoor lighting, tabletop photography, and hands-on shooting assignments.", image: "/images/practicalshooting.png" },
+  { title: "Post-Processing", desc: "Retouching in Photoshop, colour grading in Lightroom, and video editing in Premiere Pro.", image: "/images/course-content.jpg" },
 ];
 
 const fadeInUp = {
@@ -170,10 +170,17 @@ export default function HomePage() {
               Class Curriculum
             </h2>
           </motion.div>
-          <motion.div variants={staggerContainer} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <motion.div variants={staggerContainer} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {curriculumCards.map((item) => (
               <motion.div key={item.title} variants={staggerItem} className="bg-gray-50 rounded-2xl overflow-hidden">
-                <div className="aspect-[3/4] bg-gray-200" />
+                <div className="aspect-[3/4] relative">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <div className="p-5">
                   <h3 className="text-black text-lg font-semibold mb-2">{item.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>

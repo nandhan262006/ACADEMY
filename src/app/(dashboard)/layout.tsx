@@ -1,14 +1,10 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
 import {
   LayoutDashboard,
   BookOpen,
   CreditCard,
   Calendar,
   Bell,
-  LogOut,
 } from "lucide-react";
 
 const sidebarLinks = [
@@ -43,17 +39,7 @@ export default function DashboardLayout({
             </Link>
           ))}
         </nav>
-        <div className="p-4 border-t">
-          <form action="/api/auth/signout" method="post">
-            <button
-              type="submit"
-              className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100 transition-colors w-full"
-            >
-              <LogOut className="h-5 w-5" />
-              Sign Out
-            </button>
-          </form>
-        </div>
+
       </aside>
 
       {/* Main Content */}

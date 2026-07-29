@@ -19,8 +19,11 @@ export default function GalleryPage() {
   const [selected, setSelected] = useState<string | null>(null);
 
   const images = Array.from(
-    { length: 24 },
-    (_, i) => `/images/gallery/photo-${i + 1}.jpg`,
+    { length: 27 },
+    (_, i) => {
+      const n = i + 1;
+      return `/images/gallery/gallery${n}${n <= 18 ? ".jpg" : ".png"}`;
+    },
   );
 
   return (
@@ -49,8 +52,7 @@ export default function GalleryPage() {
               variants={fadeInUp}
               className="text-gray-500 max-w-lg mx-auto"
             >
-              Add your photos to <code>public/images/gallery/</code> as{" "}
-              <code>photo-1.jpg</code>, <code>photo-2.jpg</code>, etc.
+              Glimpses from our academy batches and events
             </motion.p>
           </motion.div>
 
