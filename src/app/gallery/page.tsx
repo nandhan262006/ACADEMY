@@ -20,10 +20,7 @@ export default function GalleryPage() {
 
   const images = Array.from(
     { length: 27 },
-    (_, i) => {
-      const n = i + 1;
-      return `/images/gallery/gallery${n}${n <= 18 ? ".jpg" : ".png"}`;
-    },
+    (_, i) => `/images/gallery/gallery${i + 1}.jpg`,
   );
 
   return (
