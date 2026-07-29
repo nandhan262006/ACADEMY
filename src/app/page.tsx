@@ -78,7 +78,7 @@ export default function HomePage() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
         transition={{ duration: 0.6 }}
-        className="py-28"
+        className="py-20 md:py-28"
       >
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -135,7 +135,7 @@ export default function HomePage() {
           </motion.div>
           <motion.div
             variants={staggerContainer}
-            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-5xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-5xl mx-auto"
           >
             {topics.map((topic, index) => (
               <motion.div
@@ -159,7 +159,7 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="py-28"
+        className="py-20 md:py-28"
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-16">
@@ -173,7 +173,7 @@ export default function HomePage() {
               <motion.div variants={staggerContainer} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {curriculumCards.map((item) => (
               <motion.div key={item.title} variants={staggerItem} className="bg-gray-50 rounded-2xl overflow-hidden">
-                <div className="aspect-[3/4] relative">
+                <div className="aspect-[4/3] sm:aspect-[3/4] relative">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -195,7 +195,7 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="py-28"
+        className="py-20 md:py-28"
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-16">
@@ -236,7 +236,7 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="py-28"
+        className="py-20 md:py-28"
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-16">
@@ -289,7 +289,7 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="py-28"
+        className="py-20 md:py-28"
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-16">
