@@ -62,8 +62,8 @@ export interface Payment {
   id: string;
   enrollment_id: string;
   user_id: string;
-  razorpay_order_id: string;
-  razorpay_payment_id: string | null;
+  order_id: string;
+  payment_id: string | null;
   amount: number;
   currency: string;
   status: "created" | "captured" | "failed" | "refunded";
