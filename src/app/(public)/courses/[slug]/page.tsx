@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,12 +15,12 @@ import { Separator } from "@/components/ui/separator";
 import {
   Clock,
   Users,
-  CheckCircle,
   ArrowRight,
   Calendar,
   BookOpen,
   Sparkles,
 } from "lucide-react";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
 
 const curriculum = [
   "History of Photography",
@@ -41,9 +43,77 @@ const curriculum = [
   "Branding & Marketing",
 ];
 
-export default function CourseDetailPage() {
+const course = {
+  title: "Online Photography Course",
+  slug: "online-photography-course",
+  price: 38000,
+  durationWeeks: 8,
+  nextBatchStart: "January 15, 2026",
+  description:
+    "Master photography from fundamentals to advanced techniques with live online classes.",
+};
+
+export function generateStaticParams() {
+  return [{ slug: course.slug }];
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  if (slug !== course.slug) return {};
+
+  return {
+    title: course.title,
+    description:
+      "Master photography from fundamentals to advanced techniques with live online classes at Photriya Academy.",
+    alternates: {
+      canonical: `/courses/${course.slug}`,
+    },
+    openGraph: {
+      title: `${course.title} | ${SITE_NAME}`,
+      description: course.description,
+      url: `${SITE_URL}/courses/${course.slug}`,
+      type: "website",
+    },
+  };
+}
+
+const courseJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: course.title,
+  description:
+    "The live-streamed sessions focus on fundamentals as well as lessons on composition, lighting, editing techniques and colour correction.",
+  provider: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    sameAs: SITE_URL,
+  },
+  offers: {
+    "@type": "Offer",
+    price: "38000",
+    priceCurrency: "INR",
+    category: "Paid",
+  },
+};
+
+export default async function CourseDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  if (slug !== course.slug) notFound();
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
       {/* Hero */}
       <section className="bg-navy relative overflow-hidden">
         <div className="absolute top-0 left-0 w-80 h-80 bg-gold/5 rounded-full blur-3xl" />
@@ -54,7 +124,7 @@ export default function CourseDetailPage() {
                 Featured Course
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                Online Photography Course
+                {course.title}
               </h1>
               <p className="text-lg text-gray-300 mb-6 leading-relaxed">
                 Master photography from fundamentals to advanced techniques with

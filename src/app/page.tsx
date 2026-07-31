@@ -101,13 +101,17 @@ export default function HomePage() {
                 photographs, you can be confident this course will improve your
                 knowledge and skill dramatically.
               </p>
-              <div className="flex flex-wrap gap-2 md:gap-4">
-                {["8 Weeks", "30 Students/Batch", "Certificate"].map((label) => (
-                  <div key={label} className="bg-gray-100 rounded-full px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-medium text-gray-700">
-                    {label}
-                  </div>
+              <motion.div
+                variants={staggerContainer}
+                className="flex items-center gap-3 md:gap-4 text-xs md:text-sm font-medium text-gray-700"
+              >
+                {["8 Weeks", "30 Students/Batch", "Certificate"].map((label, i) => (
+                  <motion.span key={label} variants={staggerItem} className="inline-flex items-center gap-3 md:gap-4">
+                    {i > 0 && <span className="text-gray-300">&middot;</span>}
+                    <span>{label}</span>
+                  </motion.span>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
             <motion.div
               variants={fadeInUp}
@@ -115,7 +119,7 @@ export default function HomePage() {
               className="order-1 md:order-2 aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden"
             >
               <Image
-                src="/images/hero.png"
+                src="/images/about.avif"
                 alt="Online Photography Course"
                 width={600}
                 height={450}
@@ -130,10 +134,10 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="py-16 md:py-28 bg-gray-50"
+        className="py-12 md:py-28 bg-gray-50"
       >
         <div className="container mx-auto px-4">
-          <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
+          <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-6 md:mb-16">
             <p className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-2 md:mb-4">
               Curriculum
             </p>
@@ -143,18 +147,18 @@ export default function HomePage() {
           </motion.div>
           <motion.div
             variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3 max-w-5xl mx-auto"
+            className="grid grid-cols-2 lg:grid-cols-3 gap-1.5 md:gap-3 max-w-5xl mx-auto"
           >
             {topics.map((topic, index) => (
               <motion.div
                 key={index}
                 variants={staggerItem}
-                className="flex items-center gap-3 p-3 md:p-4 rounded-xl bg-white border border-gray-100 hover:border-black/20 hover:shadow-md transition-all group"
+                className="flex items-center gap-2.5 p-2 md:p-4 rounded-xl bg-white border border-gray-100 hover:border-black/20 hover:shadow-md transition-all group"
               >
-                <span className="flex-shrink-0 w-7 h-7 md:w-8 md:h-8 bg-black text-white rounded-lg flex items-center justify-center text-[11px] md:text-sm font-bold">
+                <span className="flex-shrink-0 w-6 h-6 md:w-8 md:h-8 bg-black text-white rounded-lg flex items-center justify-center text-[10px] md:text-sm font-bold">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="text-[13px] md:text-sm font-medium text-gray-700 group-hover:text-black transition-colors leading-tight">
+                <span className="text-[12px] md:text-sm font-medium text-gray-700 group-hover:text-black transition-colors leading-tight">
                   {topic}
                 </span>
               </motion.div>
@@ -167,10 +171,10 @@ export default function HomePage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="py-14 md:py-28"
+        className="py-10 md:py-28"
       >
         <div className="container mx-auto px-4">
-          <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
+          <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-8 md:mb-16">
             <p className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-2 md:mb-4">
               Curriculum
             </p>
@@ -178,7 +182,7 @@ export default function HomePage() {
               Class Curriculum
             </h2>
           </motion.div>
-          <motion.div variants={staggerContainer} className="grid md:grid-cols-3 gap-4 md:gap-8 max-w-5xl mx-auto">
+          <motion.div variants={staggerContainer} className="grid md:grid-cols-3 gap-3 md:gap-8 max-w-5xl mx-auto">
             {curriculumCards.map((item) => (
               <motion.div key={item.title} variants={staggerItem} className="bg-gray-50 rounded-2xl overflow-hidden">
                 <div className="aspect-[4/3] sm:aspect-[3/4] relative">
@@ -189,7 +193,7 @@ export default function HomePage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-4 md:p-5">
+                <div className="p-3 md:p-5">
                   <h3 className="text-black text-base md:text-lg font-semibold mb-1 md:mb-2">{item.title}</h3>
                   <p className="text-gray-600 text-xs md:text-sm leading-relaxed">{item.desc}</p>
                 </div>
@@ -256,7 +260,7 @@ export default function HomePage() {
             </h2>
           </motion.div>
           <motion.div variants={fadeInUp} transition={{ duration: 0.6, delay: 0.1 }} className="max-w-3xl mx-auto">
-            <div className="border border-gray-100 shadow-sm rounded-2xl p-5 md:p-6">
+            <div className="border border-gray-100 shadow-sm rounded-2xl p-5 md:p-6 bg-white">
               <div className="flex items-center justify-between mb-3">
                 <span className="bg-gray-100 text-gray-700 rounded-full text-[11px] md:text-xs px-2.5 md:px-3 py-1 font-medium">Upcoming</span>
                 <span className="text-xs md:text-sm text-gray-500">0/30 seats filled</span>

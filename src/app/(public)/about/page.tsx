@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import {
   Card,
   CardContent,
@@ -7,6 +8,23 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Camera, Heart, Target, Award, Sparkles } from "lucide-react";
+import { SITE_URL } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Photriya Academy makes photography education accessible to everyone. Founded by Photriya Venky, we've trained hundreds of students across India.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Us | Photriya Academy",
+    description:
+      "Learn about our mission to make photography education accessible to everyone.",
+    url: `${SITE_URL}/about`,
+    type: "website",
+  },
+};
 
 const values = [
   {
@@ -84,7 +102,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-br from-gold/20 to-navy/20 rounded-2xl blur-xl" />
               <Image
-                src="/images/multiple-perspectives.jpg"
+                src="/images/about.avif"
                 alt="Photriya Academy Classroom"
                 width={600}
                 height={400}

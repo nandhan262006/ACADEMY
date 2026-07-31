@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,6 +11,23 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Users, ArrowRight, BookOpen, Sparkles } from "lucide-react";
+import { SITE_URL } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Our Courses",
+  description:
+    "Learn photography from industry experts with comprehensive online courses — fundamentals, composition, lighting, editing, and colour correction.",
+  alternates: {
+    canonical: "/courses",
+  },
+  openGraph: {
+    title: "Our Courses | Photriya Academy",
+    description:
+      "Learn photography from industry experts with comprehensive courses designed for all skill levels.",
+    url: `${SITE_URL}/courses`,
+    type: "website",
+  },
+};
 
 export default function CoursesPage() {
   return (
