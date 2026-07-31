@@ -90,7 +90,7 @@ export function Navbar() {
                 Login
               </Button>
             </Link>
-            <Link href="/contact">
+            <Link href="/batches">
               <Button size="sm" className="bg-navy hover:bg-navy-light text-white shadow-sm">
                 Apply Now
               </Button>
@@ -120,7 +120,7 @@ export function Navbar() {
                     Login
                   </Button>
                 </Link>
-                <Link href="/contact" onClick={() => setIsOpen(false)}>
+                <Link href="/batches" onClick={() => setIsOpen(false)}>
                   <Button className="w-full bg-navy hover:bg-navy-light text-white">
                     Apply Now
                   </Button>

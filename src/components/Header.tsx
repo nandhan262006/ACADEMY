@@ -52,7 +52,7 @@ export default function Header() {
           <Link href="/login" className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-black rounded-xl border border-gray-200 hover:bg-gray-50 transition-all">
             Login
           </Link>
-          <Link href="/contact" className="px-4 py-2 text-sm font-medium bg-black text-white rounded-xl hover:bg-gray-800 transition-all">
+          <Link href="/batches" className="px-4 py-2 text-sm font-medium bg-black text-white rounded-xl hover:bg-gray-800 transition-all">
             Apply Now
           </Link>
         </div>
@@ -103,7 +103,7 @@ export default function Header() {
               <Link href="/login" onClick={() => setIsOpen(false)} className="block w-full text-center px-4 py-2.5 text-sm font-medium text-gray-700 rounded-xl border border-gray-200 hover:bg-gray-50 transition-all">
                 Login
               </Link>
-              <Link href="/contact" onClick={() => setIsOpen(false)} className="block w-full text-center px-4 py-2.5 text-sm font-medium bg-black text-white rounded-xl hover:bg-gray-800 transition-all">
+              <Link href="/batches" onClick={() => setIsOpen(false)} className="block w-full text-center px-4 py-2.5 text-sm font-medium bg-black text-white rounded-xl hover:bg-gray-800 transition-all">
                 Apply Now
               </Link>
             </div>

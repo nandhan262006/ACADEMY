@@ -92,7 +92,7 @@ export default function Hero() {
                   Explore Courses
                 </button>
               </Link>
-              <Link href="/contact">
+              <Link href="/batches">
                 <button className="w-full sm:w-auto h-11 md:h-12 px-6 md:px-8 bg-white text-black font-medium rounded-xl border border-gray-200 hover:scale-[1.02] hover:shadow-lg transition-all duration-300 text-sm md:text-base">
                   Apply Now
                 </button>

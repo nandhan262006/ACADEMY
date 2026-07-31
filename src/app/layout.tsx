@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { Footer } from "@/components/public/footer";
 import VideoPopup from "@/components/VideoPopup";
-import PhotoGridBackground from "@/components/PhotoGridBackground";
+import SiteBackground from "@/components/SiteBackground";
 import {
   SITE_URL,
   SITE_NAME,
@@ -108,7 +108,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Header />
         <main className="flex-1 relative">
-          <PhotoGridBackground />
+          <SiteBackground />
           <div className="relative z-10">{children}</div>
         </main>
         <Footer />

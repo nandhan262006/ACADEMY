@@ -146,7 +146,7 @@ export default async function CourseDetailPage({
                 <span className="text-4xl font-bold text-gold-light">₹38,000</span>
                 <span className="text-gray-400">/ complete course</span>
               </div>
-              <Link href="/contact">
+              <Link href="/batches">
                 <Button
                   size="lg"
                   className="bg-gold hover:bg-gold-light text-navy font-semibold shadow-lg shadow-gold/25"
@@ -267,7 +267,7 @@ export default async function CourseDetailPage({
                     <p className="text-sm text-gray-500 mb-5">
                       Complete Course Fee
                     </p>
-                    <Link href="/contact">
+                    <Link href="/batches">
                       <Button className="w-full bg-gold hover:bg-gold-light text-navy font-semibold shadow-sm">
                         Apply Now
                         <ArrowRight className="ml-2 h-4 w-4" />
