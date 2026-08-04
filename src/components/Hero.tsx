@@ -2,16 +2,51 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { animate, motion, useInView } from "framer-motion";
+
+const stats = [
+  { value: 25, label: "Years of Experience", suffix: "+" },
+  { value: 37, label: "Batches Completed", suffix: "+" },
+  { value: 3000, label: "Students Trained", suffix: "+" },
+  { value: 200, label: "Workshops", suffix: "+" },
+];
+
+function Stat({ value, suffix, label }: { value: number; suffix?: string; label: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true });
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (inView) {
+      const controls = animate(0, value, {
+        duration: 1.5,
+        ease: "easeOut",
+        onUpdate: (v) => setDisplay(Math.round(v)),
+      });
+      return controls.stop;
+    }
+  }, [inView, value]);
+
+  return (
+    <div ref={ref} className="flex-1 text-center">
+      <div className="text-lg md:text-3xl font-bold text-black">
+        {display}
+        {suffix}
+      </div>
+      <div className="text-[10px] md:text-xs text-gray-500 mt-0.5">{label}</div>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
-    <section className="relative pt-[72px] md:min-h-[70vh] bg-white">
+    <section className="relative pt-[72px] min-h-screen md:min-h-screen bg-white">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="md:hidden relative h-[45vh]"
+        className="md:hidden relative h-[35vh]"
       >
         <Image
           src="/images/hero.png"
@@ -40,26 +75,34 @@ export default function Hero() {
       </motion.div>
 
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:min-h-screen items-center">
-          <div className="flex-1 py-8 md:py-0 md:max-w-[55%]">
+        <div className="flex flex-col md:flex-row md:min-h-[calc(100vh-72px)] items-center">
+          <div className="flex-1 py-6 md:py-0 md:max-w-[55%]">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-3 py-1 text-xs md:text-sm text-gray-600 mb-4 md:mb-6"
+              className="inline-flex items-center gap-2 border border-gray-300 rounded-full px-3 py-1 text-xs md:text-sm text-gray-600 mb-3 md:mb-6"
             >
               <span className="w-1.5 h-1.5 bg-black rounded-full" />
-              Welcome to Photriya Academy
+              Designed by Photriya Venky
             </motion.div>
 
-            <motion.h1 className="text-[2.75rem] sm:text-6xl lg:text-8xl font-bold leading-[0.95] tracking-tighter text-black mb-4 md:mb-6">
+            <motion.h1 className="text-[2rem] sm:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-black mb-2 md:mb-4">
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="block"
               >
-                Photography
+                Professional
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.55 }}
+                className="block"
+              >
+                Photography &amp;
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
@@ -67,7 +110,7 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="block"
               >
-                Mastered.
+                Videography Course
               </motion.span>
             </motion.h1>
 
@@ -75,82 +118,51 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-base md:text-lg text-gray-600 max-w-xl mb-6 md:mb-8 leading-relaxed"
+              className="text-xs md:text-base text-gray-600 max-w-xl mb-3 md:mb-6 leading-relaxed"
             >
-              Learn photography from industry experts with live online classes.
-              Master DSLR, composition, lighting, editing, and more.
+              Master Photography, Videography, &amp; Business in One Comprehensive Course. An intensive 2-month program created for aspiring photographers, content creators, and creative professionals who want to build a strong foundation and gain practical industry-ready skills.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="hidden md:block text-xs md:text-sm text-gray-500 max-w-xl mb-6 md:mb-8 leading-relaxed"
+            >
+              From understanding your camera to mastering editing techniques and learning how to market yourself as a professional, this course covers every essential aspect required to begin your creative journey.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              className="flex flex-col sm:flex-row gap-3 md:gap-4"
+              transition={{ duration: 0.6, delay: 0.85 }}
+              className="flex items-stretch justify-between gap-2 md:gap-3 mt-4 md:mt-8 md:max-w-xl"
             >
-              <Link href="/courses/online-photography-course">
-                <button className="w-full sm:w-auto h-11 md:h-12 px-6 md:px-8 bg-black text-white font-medium rounded-xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 text-sm md:text-base">
-                  Explore Courses
-                </button>
-              </Link>
-              <Link href="/batches">
-                <button className="w-full sm:w-auto h-11 md:h-12 px-6 md:px-8 bg-white text-black font-medium rounded-xl border border-gray-200 hover:scale-[1.02] hover:shadow-lg transition-all duration-300 text-sm md:text-base">
-                  Apply Now
-                </button>
-              </Link>
+              {stats.map((stat) => (
+                <Stat key={stat.label} {...stat} />
+              ))}
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="md:hidden grid grid-cols-2 gap-3 mt-8"
+              className="flex flex-col sm:flex-row gap-2 md:gap-4 mt-4 md:mt-8"
             >
-              <div className="bg-gray-50 rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-black">500+</div>
-                <div className="text-xs text-gray-500 mt-0.5">Students Trained</div>
-              </div>
-              <div className="bg-gray-50 rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-black">50+</div>
-                <div className="text-xs text-gray-500 mt-0.5">Batches Completed</div>
-              </div>
-              <div className="bg-gray-50 rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-black">18</div>
-                <div className="text-xs text-gray-500 mt-0.5">Course Topics</div>
-              </div>
-              <div className="bg-gray-50 rounded-xl p-4 text-center">
-                <div className="text-2xl font-bold text-black">8</div>
-                <div className="text-xs text-gray-500 mt-0.5">Weeks Duration</div>
-              </div>
+              <Link href="/courses/online-photography-course">
+                <button className="w-full sm:w-auto h-10 md:h-12 px-5 md:px-8 bg-black text-white font-medium rounded-xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 text-xs md:text-base">
+                  Learn Online
+                </button>
+              </Link>
+              <Link href="/courses/offline-photography-course">
+                <button className="w-full sm:w-auto h-10 md:h-12 px-5 md:px-8 bg-white text-black font-medium rounded-xl border border-gray-200 hover:scale-[1.02] hover:shadow-lg transition-all duration-300 text-xs md:text-base">
+                  Learn Offline
+                </button>
+              </Link>
             </motion.div>
           </div>
         </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.0 }}
-        className="hidden md:block container mx-auto px-4 pb-16"
-      >
-        <div className="grid grid-cols-4 gap-6 max-w-xl border-t border-gray-100 pt-10">
-          <div>
-            <div className="text-3xl font-bold text-black">500+</div>
-            <div className="text-xs text-gray-500 mt-1">Students Trained</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-black">50+</div>
-            <div className="text-xs text-gray-500 mt-1">Batches Completed</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-black">18</div>
-            <div className="text-xs text-gray-500 mt-1">Course Topics</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-black">8</div>
-            <div className="text-xs text-gray-500 mt-1">Weeks Duration</div>
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 }

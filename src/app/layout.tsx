@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { Footer } from "@/components/public/footer";
 import VideoPopup from "@/components/VideoPopup";
-import SiteBackground from "@/components/SiteBackground";
 import {
   SITE_URL,
   SITE_NAME,
@@ -107,9 +106,8 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <Header />
-        <main className="flex-1 relative">
-          <SiteBackground />
-          <div className="relative z-10">{children}</div>
+        <main className="flex-1">
+          {children}
         </main>
         <Footer />
         <VideoPopup />
