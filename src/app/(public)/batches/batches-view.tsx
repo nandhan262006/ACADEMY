@@ -9,14 +9,17 @@ import {
   Clock,
   Users,
   ArrowRight,
-  Sparkles,
   Monitor,
   MapPin,
 } from "lucide-react";
 
+const ONLINE_PRICE = 37000;
+const OFFLINE_PRICE = 43000;
+
 const onlineBatches = [
   {
     id: 1,
+    mode: "online" as const,
     name: "January 2026 Batch",
     course: "Online Photography Course",
     startDate: "January 15, 2026",
@@ -24,10 +27,12 @@ const onlineBatches = [
     schedule: "Mon-Fri, 8:00 AM - 10:30 AM IST",
     maxStudents: 30,
     currentStudents: 12,
+    price: ONLINE_PRICE,
     status: "upcoming" as const,
   },
   {
     id: 2,
+    mode: "online" as const,
     name: "March 2026 Batch",
     course: "Online Photography Course",
     startDate: "March 20, 2026",
@@ -35,10 +40,12 @@ const onlineBatches = [
     schedule: "Mon-Fri, 8:00 AM - 10:30 AM IST",
     maxStudents: 30,
     currentStudents: 0,
+    price: ONLINE_PRICE,
     status: "upcoming" as const,
   },
   {
     id: 3,
+    mode: "online" as const,
     name: "June 2026 Batch",
     course: "Online Photography Course",
     startDate: "June 10, 2026",
@@ -46,10 +53,12 @@ const onlineBatches = [
     schedule: "Mon-Fri, 8:00 AM - 10:30 AM IST",
     maxStudents: 30,
     currentStudents: 8,
+    price: ONLINE_PRICE,
     status: "upcoming" as const,
   },
   {
     id: 4,
+    mode: "online" as const,
     name: "September 2026 Batch",
     course: "Online Photography Course",
     startDate: "September 5, 2026",
@@ -57,6 +66,7 @@ const onlineBatches = [
     schedule: "Mon-Fri, 8:00 AM - 10:30 AM IST",
     maxStudents: 30,
     currentStudents: 3,
+    price: ONLINE_PRICE,
     status: "upcoming" as const,
   },
 ];
@@ -64,6 +74,7 @@ const onlineBatches = [
 const offlineBatches = [
   {
     id: 5,
+    mode: "offline" as const,
     name: "January 2026 Batch",
     course: "Offline Photography Course",
     startDate: "January 20, 2026",
@@ -72,10 +83,12 @@ const offlineBatches = [
     maxStudents: 20,
     currentStudents: 8,
     location: "Hyderabad",
+    price: OFFLINE_PRICE,
     status: "upcoming" as const,
   },
   {
     id: 6,
+    mode: "offline" as const,
     name: "March 2026 Batch",
     course: "Offline Photography Course",
     startDate: "March 25, 2026",
@@ -84,6 +97,7 @@ const offlineBatches = [
     maxStudents: 20,
     currentStudents: 2,
     location: "Hyderabad",
+    price: OFFLINE_PRICE,
     status: "upcoming" as const,
   },
 ];
@@ -100,15 +114,11 @@ export default function BatchesContent() {
       {/* Hero */}
       <section className="bg-navy relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="container mx-auto px-4 py-24 md:py-32 relative">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-sm text-gold-light mb-5">
-            <Sparkles className="h-4 w-4" />
-            <span>Schedule</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+        <div className="container mx-auto px-4 py-14 sm:py-20 md:py-28 lg:py-32 relative">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
             Available Batches
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
             Choose a batch that fits your schedule. Limited seats available to
             ensure personalized attention.
           </p>
@@ -116,7 +126,7 @@ export default function BatchesContent() {
       </section>
 
       {/* Photo Banner */}
-      <section className="relative h-[300px] md:h-[420px] overflow-hidden">
+      <section className="relative h-[200px] sm:h-[280px] md:h-[360px] lg:h-[420px] overflow-hidden">
         <Image
           src="/images/gallery/gallery7.jpg"
           alt="Photography batches"
@@ -168,10 +178,12 @@ export default function BatchesContent() {
           {/* Batch Cards */}
           <div className="max-w-5xl mx-auto space-y-4">
             {batches.map((batch) => {
-              const isOnline = "maxStudents" in batch;
-              const fillPercent = isOnline
-                ? (batch.currentStudents / batch.maxStudents) * 100
-                : ((batch as typeof offlineBatches[0]).currentStudents / (batch as typeof offlineBatches[0]).maxStudents) * 100;
+              const isOnline = batch.mode === "online";
+              const seatsLeft = batch.maxStudents - batch.currentStudents;
+              const fillPercent =
+                batch.maxStudents > 0
+                  ? (batch.currentStudents / batch.maxStudents) * 100
+                  : 0;
 
               const modeLabel = isOnline ? "Online" : "Offline";
               const whatsappMessage = `Hi Photriya Academy! I would like to enroll in the ${modeLabel} ${batch.name} (${batch.course}) starting ${batch.startDate}.`;
@@ -211,15 +223,15 @@ export default function BatchesContent() {
                           {batch.schedule}
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-600">
-                          {isOnline ? (
-                            <Users className="h-4 w-4 text-gray-400" />
-                          ) : (
-                            <MapPin className="h-4 w-4 text-gray-400" />
-                          )}
-                          {isOnline
-                            ? `${(batch as typeof onlineBatches[0]).maxStudents - (batch as typeof onlineBatches[0]).currentStudents} seats available`
-                            : (batch as typeof offlineBatches[0]).location}
+                          <Users className="h-4 w-4 text-gray-400" />
+                          {seatsLeft} seats available
                         </div>
+                        {!isOnline && "location" in batch && batch.location && (
+                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                            <MapPin className="h-4 w-4 text-gray-400" />
+                            {batch.location}
+                          </div>
+                        )}
                       </div>
                       <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
                         <div
@@ -230,18 +242,20 @@ export default function BatchesContent() {
                     </div>
 
                     {/* Right: price + CTA */}
-                    <div className="flex md:flex-col items-center justify-between md:justify-center gap-4 p-5 md:p-6 md:border-l border-gray-100 bg-gray-50/50 md:min-w-[200px]">
-                      <div className="text-center">
-                        <p className="text-2xl font-bold text-black">₹38,000</p>
+                    <div className="flex flex-col sm:flex-row md:flex-col items-stretch sm:items-center justify-between md:justify-center gap-3 sm:gap-4 p-5 md:p-6 md:border-l border-t md:border-t-0 border-gray-100 bg-gray-50/50 md:min-w-[200px]">
+                      <div className="text-left sm:text-center">
+                        <p className="text-2xl font-bold text-black">
+                          ₹{batch.price.toLocaleString("en-IN")}
+                        </p>
                         <p className="text-xs text-gray-400">complete course</p>
                       </div>
                       <a
                         href={whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex"
+                        className="inline-flex w-full sm:w-auto"
                       >
-                        <Button className="bg-black hover:bg-gray-800 text-white">
+                        <Button className="w-full sm:w-auto bg-black hover:bg-gray-800 text-white">
                           Enroll Now
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>

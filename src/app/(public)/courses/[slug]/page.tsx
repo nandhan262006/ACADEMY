@@ -1,21 +1,15 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import {
   Clock,
   ArrowRight,
   Calendar,
-  Sparkles,
   MapPin,
   Monitor,
   BookOpen,
@@ -92,8 +86,6 @@ interface CourseData {
   slug: string;
   price: number;
   mode: "online" | "offline";
-  batchName: string;
-  startDate: string;
   description: string;
   intro: string[];
   faqs: { q: string; a: string }[];
@@ -104,8 +96,6 @@ const onlineCourse: CourseData = {
   slug: "online-photography-course",
   price: 37000,
   mode: "online",
-  batchName: "Batch 38",
-  startDate: "Oct 5th",
   description:
     "Master Photography, Videography, & Business in One Comprehensive Course — live-streamed from our classroom via Zoom.",
   intro: [
@@ -150,8 +140,6 @@ const offlineCourse: CourseData = {
   slug: "offline-photography-course",
   price: 43000,
   mode: "offline",
-  batchName: "Batch 38",
-  startDate: "Oct 5th",
   description:
     "Designed by Photriya Venky, this course is ideal for anyone who wants to build a strong foundation in photography with extensive hands-on practice.",
   intro: [
@@ -209,6 +197,14 @@ export async function generateMetadata({
       description: course.description,
       url: `${SITE_URL}/courses/${course.slug}`,
       type: "website",
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: course.title,
+        },
+      ],
     },
   };
 }
@@ -247,69 +243,50 @@ export default async function CourseDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
       />
 
-      <section className="bg-navy relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-48 md:w-80 h-48 md:h-80 bg-gold/5 rounded-full blur-3xl" />
-        <div className="container mx-auto px-4 py-8 md:py-32 relative">
-          <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
-            <div>
-              <div className="hidden md:flex gap-2 mb-4">
-                <Badge className="bg-gold text-navy border-0">
-                  {course.mode === "online" ? "Online" : "In-Person"}
-                </Badge>
-                <Badge variant="outline" className="border-white/20 text-gray-300">
-                  {course.batchName}
-                </Badge>
-              </div>
-              <h1 className="text-lg md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4 tracking-tight leading-tight">
+      <section className="bg-black relative overflow-hidden">
+        <div className="container mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-20 relative">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-6 md:gap-10">
+            <div className="flex-1 space-y-4 md:space-y-5">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight pt-4">
                 {course.title}
               </h1>
-              <p className="hidden md:block text-xs md:text-lg text-gray-300 mb-3 md:mb-6 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-xl">
                 {course.description}
               </p>
-              <div className="flex flex-wrap gap-2 md:gap-5 mb-2 md:mb-6">
-                {[
-                  { icon: Clock, label: "2 Months" },
-                  { icon: Calendar, label: "Mon-Fri" },
-                  { icon: Clock, label: "8:00 AM – 10:30 AM IST" },
-                ].map((item) => (
-                  <div key={item.label} className="flex items-center gap-1.5">
-                    <item.icon className="h-3.5 w-3.5 md:h-5 md:w-5 text-gold" />
-                    <span className="text-gray-200 text-[11px] md:text-sm">{item.label}</span>
-                  </div>
-                ))}
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
+                <span className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-gray-500" /> 2 Months
+                </span>
+                <span className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4 text-gray-500" /> Mon–Fri
+                </span>
+                <span className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-gray-500" /> 8:00 AM – 10:30 AM IST
+                </span>
               </div>
-              <div className="flex items-baseline gap-2 mb-3 md:mb-8">
-                <span className="text-2xl md:text-4xl font-bold text-gold-light">
+              <div className="flex items-center gap-4 pt-1">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   ₹{course.price.toLocaleString()}
                 </span>
-                <span className="text-gray-400 text-xs">/ complete course</span>
-              </div>
-              <Link href="/batches">
-                <Button
-                  size="lg"
-                  className="bg-gold hover:bg-gold-light text-navy font-semibold shadow-lg shadow-gold/25 h-10 md:h-12 px-5 md:px-8 text-xs md:text-sm"
+                <a
+                  href={`https://wa.me/919618855959?text=${encodeURIComponent(`Hi Photriya Academy! I'm interested in the ${course.mode === "online" ? "Online" : "Offline"} Course — ${course.title}. Please share the details.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Apply Now
-                  <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
-                </Button>
-              </Link>
+                  <Button className="h-11 px-8 bg-white text-black font-medium hover:bg-gray-200 shadow-sm text-sm">
+                    Apply Now
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </a>
+              </div>
             </div>
-            <div className="relative md:hidden mb-4 rounded-xl overflow-hidden aspect-[16/9]">
+            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] lg:w-[45%] lg:shrink-0">
               <Image
                 src={course.mode === "online" ? "/images/online-course.jpg" : "/images/about.avif"}
                 alt={course.title}
                 fill
                 className="object-cover"
-              />
-            </div>
-            <div className="relative hidden md:block">
-              <div className="absolute -inset-1 bg-gradient-to-br from-gold/20 to-white/5 rounded-2xl blur-xl" />
-              <Image
-                src={course.mode === "online" ? "/images/online-course.jpg" : "/images/about.avif"}
-                alt={course.title}
-                width={600}
-                height={400}
-                className="relative rounded-2xl shadow-lg"
+                sizes="(max-width: 1023px) 100vw, 45vw"
               />
             </div>
           </div>
@@ -320,10 +297,6 @@ export default async function CourseDetailPage({
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 md:gap-14">
             <div className="md:col-span-2">
-              <div className="inline-flex items-center gap-2 bg-gold/10 text-gold text-sm font-medium px-3 py-1 rounded-full mb-5">
-                <Sparkles className="h-4 w-4" />
-                <span>Overview</span>
-              </div>
               <h2 className="text-xl md:text-3xl font-bold text-navy mb-4 md:mb-6 tracking-tight">
                 {course.mode === "online"
                   ? "One Course. Two Ways to Learn."
@@ -334,6 +307,41 @@ export default async function CourseDetailPage({
                   <p key={i}>{p}</p>
                 ))}
               </div>
+
+              {course.mode === "online" && (
+                <>
+                  <Separator className="my-6 md:my-10" />
+                  <h2 className="text-xl md:text-3xl font-bold text-navy mb-1 md:mb-2 tracking-tight">
+                    How We Teach Online
+                  </h2>
+                  <p className="text-gray-500 mb-4 md:mb-8">
+                    Multi-camera live streams bring the classroom to your screen
+                  </p>
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
+                    {[
+                      { title: "Multiple Perspectives", desc: "Multi-camera streams let you see the classroom, the camera viewfinder, and the editing screen simultaneously.", image: "/images/multiple-perspectives.jpg" },
+                      { title: "Live Editing", desc: "Watch every retouch and adjustment in real time on your own screen — no squinting at a projector.", image: "/images/live-editing.jpg" },
+                      { title: "Closer Look", desc: "See exactly how the pros handle gear. Our close-up shots reveal every dial, button, and setting.", image: "/images/closer-look.jpg" },
+                    ].map((item) => (
+                      <div key={item.title} className="bg-gray-50 rounded-2xl overflow-hidden">
+                        <div className="aspect-[4/3] relative w-full">
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            fill
+                            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 384px"
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="p-4 sm:p-5">
+                          <h3 className="text-black text-base sm:text-lg md:text-xl font-semibold mb-1">{item.title}</h3>
+                          <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
 
               <Separator className="my-6 md:my-10" />
 
@@ -417,76 +425,43 @@ export default async function CourseDetailPage({
             </div>
 
             <div>
-              <Card className="sticky top-24 border-0 shadow-lg">
-                <CardHeader className="bg-navy text-white rounded-t-lg">
-                  <CardTitle className="text-white flex items-center gap-2">
-                    <Sparkles className="h-5 w-5 text-gold" />
-                    {course.batchName} Details
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-5 pt-6">
-                  <div className="flex items-start gap-3">
-                    <Calendar className="h-5 w-5 text-gold mt-0.5" />
-                    <div>
-                      <p className="font-medium text-navy text-sm">Start Date</p>
-                      <p className="text-sm text-gray-600">{course.startDate}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <BookOpen className="h-5 w-5 text-gold mt-0.5" />
-                    <div>
-                      <p className="font-medium text-navy text-sm">Duration</p>
-                      <p className="text-sm text-gray-600">2 Months</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Calendar className="h-5 w-5 text-gold mt-0.5" />
-                    <div>
-                      <p className="font-medium text-navy text-sm">Schedule</p>
-                      <p className="text-sm text-gray-600">Monday to Friday</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Clock className="h-5 w-5 text-gold mt-0.5" />
-                    <div>
-                      <p className="font-medium text-navy text-sm">Timings</p>
-                      <p className="text-sm text-gray-600">8:00 AM to 10:30 AM IST</p>
-                    </div>
-                  </div>
-                  {course.mode === "online" && (
-                    <div className="flex items-start gap-3">
-                      <Monitor className="h-5 w-5 text-gold mt-0.5" />
-                      <div>
-                        <p className="font-medium text-navy text-sm">Mode</p>
-                        <p className="text-sm text-gray-600">Live via Zoom</p>
+              <Card className="sticky top-24 border border-gray-100 shadow-md overflow-hidden">
+                <div className="p-6 space-y-5">
+                  <h3 className="text-lg font-bold text-navy">Course Details</h3>
+                  <div className="space-y-4">
+                    {[
+                      { icon: BookOpen, label: "Duration", value: "2 Months" },
+                      { icon: Calendar, label: "Schedule", value: "Monday to Friday" },
+                      { icon: Clock, label: "Timings", value: "8:00 AM – 10:30 AM IST" },
+                      course.mode === "online"
+                        ? { icon: Monitor, label: "Mode", value: "Live via Zoom" }
+                        : { icon: MapPin, label: "Location", value: "Madhapur, Hyderabad" },
+                    ].map((item) => (
+                      <div key={item.label} className="flex items-center gap-3">
+                        <item.icon className="h-4 w-4 text-gray-400 shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs text-gray-400 uppercase tracking-wider">{item.label}</p>
+                          <p className="text-sm font-medium text-navy truncate">{item.value}</p>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  {course.mode === "offline" && (
-                    <div className="flex items-start gap-3">
-                      <MapPin className="h-5 w-5 text-gold mt-0.5" />
-                      <div>
-                        <p className="font-medium text-navy text-sm">Location</p>
-                        <p className="text-sm text-gray-600">Madhapur, Hyderabad</p>
-                      </div>
-                    </div>
-                  )}
+                    ))}
+                  </div>
                   <Separator />
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-navy mb-1">
-                      ₹{course.price.toLocaleString()}
-                    </p>
-                    <p className="text-sm text-gray-500 mb-5">
-                      Complete Course Fee
-                    </p>
-                    <Link href="/batches">
-                      <Button className="w-full bg-gold hover:bg-gold-light text-navy font-semibold shadow-sm">
-                        Apply Now
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </Link>
+                  <div>
+                    <span className="text-3xl font-bold text-navy">₹{course.price.toLocaleString()}</span>
+                    <span className="text-sm text-gray-400 ml-1">/ complete course</span>
                   </div>
-                </CardContent>
+                  <a
+                    href={`https://wa.me/919618855959?text=${encodeURIComponent(`Hi Photriya Academy! I'm interested in the ${course.mode === "online" ? "Online" : "Offline"} Course — ${course.title}. Please share the details.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="w-full h-11 bg-black hover:bg-gray-800 text-white font-medium shadow-sm">
+                      Apply Now
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </a>
+                </div>
               </Card>
             </div>
           </div>
@@ -496,10 +471,6 @@ export default async function CourseDetailPage({
       <section className="py-10 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6 md:mb-14">
-            <div className="inline-flex items-center gap-2 bg-gold/10 text-gold text-sm font-medium px-3 py-1 rounded-full mb-4">
-              <Sparkles className="h-4 w-4" />
-              FAQ
-            </div>
             <h2 className="text-xl md:text-3xl font-bold text-navy tracking-tight">
               Photriya Academy &mdash; {course.mode === "online" ? "Online" : "Offline"} Course FAQ
             </h2>

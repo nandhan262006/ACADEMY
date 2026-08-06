@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, ArrowRight, Monitor, MapPin, Sparkles } from "lucide-react";
+import { Clock, ArrowRight, Monitor, MapPin } from "lucide-react";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -26,6 +26,14 @@ export const metadata: Metadata = {
       "Learn photography from industry experts with comprehensive courses designed for all skill levels.",
     url: `${SITE_URL}/courses`,
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Photriya Academy",
+      },
+    ],
   },
 };
 
@@ -34,27 +42,23 @@ export default function CoursesPage() {
     <div className="flex flex-col">
       <section className="bg-navy relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="container mx-auto px-4 py-24 md:py-32 relative">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-sm text-gold-light mb-5">
-            <Sparkles className="h-4 w-4" />
-            <span>Our Programs</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+        <div className="container mx-auto px-4 py-14 sm:py-20 md:py-28 lg:py-32 relative">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
             Our Courses
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
             Learn photography from industry experts with comprehensive courses
             designed for all skill levels. Available both online and offline.
           </p>
         </div>
       </section>
 
-      <section className="py-20 md:py-28">
+      <section className="py-12 sm:py-16 md:py-24 lg:py-28">
         <div className="container mx-auto px-4">
-          <div className="grid gap-10">
+          <div className="grid gap-6 sm:gap-8 md:gap-10">
             <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="grid md:grid-cols-2">
-                <div className="relative h-72 md:h-auto">
+              <div className="grid lg:grid-cols-2">
+                <div className="relative h-52 sm:h-64 md:h-72 lg:h-auto lg:min-h-[320px]">
                   <Image
                     src="/images/online-course.jpg"
                     alt="Online Photography & Videography Course"
@@ -62,15 +66,15 @@ export default function CoursesPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-8 md:p-10 flex flex-col justify-center">
-                  <div className="flex items-center gap-2 mb-4">
+                <div className="p-5 sm:p-8 md:p-10 flex flex-col justify-center">
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
                     <Badge className="bg-gold text-navy border-0">Featured</Badge>
                     <Badge variant="outline" className="border-gray-200 text-gray-600">
                       <Monitor className="h-3 w-3 mr-1" />
                       Online
                     </Badge>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4 tracking-tight">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy mb-3 sm:mb-4 tracking-tight">
                     Online Photography & Videography Course
                   </h2>
                   <p className="text-gray-600 mb-6 leading-relaxed">
@@ -91,10 +95,10 @@ export default function CoursesPage() {
                       </div>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-3xl font-bold text-navy">₹37,000</span>
-                    <Link href="/courses/online-photography-course">
-                      <Button className="bg-navy hover:bg-navy-light text-white shadow-sm">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <span className="text-2xl sm:text-3xl font-bold text-navy">₹37,000</span>
+                    <Link href="/courses/online-photography-course" className="w-full sm:w-auto">
+                      <Button className="w-full sm:w-auto bg-navy hover:bg-navy-light text-white shadow-sm">
                         View Details
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -105,8 +109,8 @@ export default function CoursesPage() {
             </Card>
 
             <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="grid md:grid-cols-2">
-                <div className="relative h-72 md:h-auto md:order-2">
+              <div className="grid lg:grid-cols-2">
+                <div className="relative h-52 sm:h-64 md:h-72 lg:h-auto lg:min-h-[320px] lg:order-2">
                   <Image
                     src="/images/gallery/gallery1.jpg"
                     alt="Photography Foundation Course"
@@ -114,15 +118,15 @@ export default function CoursesPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-8 md:p-10 flex flex-col justify-center md:order-1">
-                  <div className="flex items-center gap-2 mb-4">
+                <div className="p-5 sm:p-8 md:p-10 flex flex-col justify-center lg:order-1">
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
                     <Badge className="bg-gold text-navy border-0">Featured</Badge>
                     <Badge variant="outline" className="border-gray-200 text-gray-600">
                       <MapPin className="h-3 w-3 mr-1" />
                       Offline
                     </Badge>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4 tracking-tight">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy mb-3 sm:mb-4 tracking-tight">
                     Photography Foundation Course
                   </h2>
                   <p className="text-gray-600 mb-6 leading-relaxed">
@@ -143,10 +147,10 @@ export default function CoursesPage() {
                       </div>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-3xl font-bold text-navy">₹43,000</span>
-                    <Link href="/courses/offline-photography-course">
-                      <Button className="bg-navy hover:bg-navy-light text-white shadow-sm">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <span className="text-2xl sm:text-3xl font-bold text-navy">₹43,000</span>
+                    <Link href="/courses/offline-photography-course" className="w-full sm:w-auto">
+                      <Button className="w-full sm:w-auto bg-navy hover:bg-navy-light text-white shadow-sm">
                         View Details
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
