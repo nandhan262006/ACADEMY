@@ -26,7 +26,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-[calc(100vh-64px)]">
+    <div className="flex min-h-[calc(100vh-72px)]">
       {/* Sidebar */}
       <aside className="hidden md:flex w-64 flex-col border-r bg-white">
         <div className="p-6">

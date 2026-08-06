@@ -19,6 +19,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      path: "/courses/offline-photography-course",
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
       path: "/batches",
       changeFrequency: "weekly" as const,
       priority: 0.8,
@@ -30,11 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       path: "/faq",
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      path: "/gallery",
       changeFrequency: "monthly" as const,
       priority: 0.6,
     },

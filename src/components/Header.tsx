@@ -2,30 +2,38 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/courses/offline-photography-course", label: "Offline" },
   { href: "/courses/online-photography-course", label: "Online" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isOpen]);
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 h-[72px] bg-white/90 backdrop-blur-xl border-b border-gray-100"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100"
     >
-      <div className="h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <Link href="/" className="flex items-center shrink-0">
+      <div className="h-[72px] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <Link href="/" className="flex items-center shrink-0" onClick={() => setIsOpen(false)}>
           <Image
             src="/images/logo.png"
             alt="Photriya Academy"
@@ -49,9 +57,11 @@ export default function Header() {
         </nav>
 
         <button
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden w-[44px] h-[44px] flex items-center justify-center rounded-xl hover:bg-gray-50 transition-colors"
+          className="md:hidden w-11 h-11 flex items-center justify-center rounded-xl hover:bg-gray-50 transition-colors"
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             {isOpen ? (
@@ -75,20 +85,36 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden bg-white border-t border-gray-100"
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden overflow-hidden border-t border-gray-100 bg-white"
           >
-            <nav className="px-4 py-4 space-y-1">
+            <nav className="max-h-[calc(100svh-72px)] overflow-y-auto px-3 py-3 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2.5 text-base font-medium text-gray-700 hover:text-black rounded-lg hover:bg-gray-50 transition-all"
+                  className="block px-4 py-3.5 text-base font-medium text-gray-800 rounded-xl active:bg-gray-100 hover:bg-gray-50 transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
+              <div className="grid grid-cols-2 gap-2 pt-3 pb-1 px-1">
+                <Link
+                  href="/courses/online-photography-course"
+                  onClick={() => setIsOpen(false)}
+                  className="flex h-11 items-center justify-center rounded-xl bg-black text-sm font-medium text-white"
+                >
+                  Learn Online
+                </Link>
+                <Link
+                  href="/courses/offline-photography-course"
+                  onClick={() => setIsOpen(false)}
+                  className="flex h-11 items-center justify-center rounded-xl border border-gray-200 text-sm font-medium text-black"
+                >
+                  Learn Offline
+                </Link>
+              </div>
             </nav>
           </motion.div>
         )}

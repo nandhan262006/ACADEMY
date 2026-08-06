@@ -4,9 +4,6 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center py-16 px-4">
       <div className="text-center">
-        <p className="text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-4">
-          404
-        </p>
         <h1 className="text-4xl md:text-6xl font-bold text-black tracking-tight mb-4">
           Page Not Found
         </h1>

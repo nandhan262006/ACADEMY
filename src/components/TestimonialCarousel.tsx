@@ -12,17 +12,22 @@ const videos = [
 export default function TestimonialCarousel() {
   return (
     <>
-      <div className="hidden md:flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none">
+      {/* Phone: 2-col grid */}
+      <div className="grid grid-cols-2 gap-3 sm:hidden">
         {videos.map((src, i) => (
-          <div key={i} className="flex-shrink-0 w-[280px] snap-center">
+          <div key={i} className="min-w-0">
             <TestimonialVideo src={src} />
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-2 gap-3 md:hidden">
+      {/* Tablet+: horizontal snap scroll */}
+      <div className="-mx-4 hidden gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory scrollbar-none sm:flex md:gap-6 md:mx-0 md:px-0">
         {videos.map((src, i) => (
-          <div key={i}>
+          <div
+            key={i}
+            className="w-[min(240px,70vw)] shrink-0 snap-center md:w-[260px] lg:w-[280px]"
+          >
             <TestimonialVideo src={src} />
           </div>
         ))}

@@ -38,6 +38,8 @@ export interface Batch {
   max_students: number;
   current_students: number;
   status: "upcoming" | "active" | "completed";
+  mode: "online" | "offline";
+  location: string | null;
   created_at: string;
   course?: Course;
 }

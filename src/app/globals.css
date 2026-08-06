@@ -94,11 +94,23 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
-    @apply font-sans scroll-smooth;
+    @apply font-sans scroll-smooth overflow-x-hidden;
+    max-width: 100%;
+  }
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    max-width: 100%;
+  }
+  img,
+  video {
+    max-width: 100%;
+  }
+  img:not([data-nimg="fill"]) {
+    height: auto;
+  }
+  img[data-nimg="fill"] {
+    max-width: none;
   }
 }
 

@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Hero from "@/components/Hero";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
-import GalleryCTA from "@/components/GalleryCTA";
+import Image from "next/image";
 
 const learningOutcomes = [
   "Confidently operate DSLR and Mirrorless cameras",
@@ -37,12 +36,6 @@ const topics = [
   "Introduction to Premiere Pro",
   "Wedding Photography",
   "Branding & Marketing",
-];
-
-const teachingPoints = [
-  { title: "Multiple Perspectives", desc: "Multi-camera streams let you see the classroom, the camera viewfinder, and the editing screen simultaneously.", image: "/images/multiple-perspectives.jpg" },
-  { title: "Live Editing", desc: "Watch every retouch and adjustment in real time on your own screen — no squinting at a projector.", image: "/images/live-editing.jpg" },
-  { title: "Closer Look", desc: "See exactly how the pros handle gear. Our close-up shots reveal every dial, button, and setting.", image: "/images/closer-look.jpg" },
 ];
 
 const audience = [
@@ -86,9 +79,6 @@ export default function HomePage() {
         className="py-14 md:py-20 bg-black text-white"
       >
         <div className="container mx-auto px-4 text-center">
-          <p className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-3 md:mb-4">
-            Learning Modes
-          </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-3 md:mb-4">
             Online &amp; Offline
           </h2>
@@ -122,14 +112,11 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <p className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-3 md:mb-4">
-              Course Details
-            </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
               Course Duration
             </h2>
           </motion.div>
-          <motion.div variants={staggerContainer} className="grid sm:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto">
+          <motion.div variants={staggerContainer} className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto">
             {[
               { label: "Duration", value: "2 Months" },
               { label: "Schedule", value: "Monday – Friday" },
@@ -162,9 +149,6 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <p className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-3 md:mb-4">
-              What You&apos;ll Learn
-            </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
               Learning Outcomes
             </h2>
@@ -202,9 +186,6 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-6 md:mb-16">
-            <p className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-2 md:mb-4">
-              Curriculum
-            </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
               Course Contents
             </h2>
@@ -239,50 +220,6 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <p className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-2 md:mb-4">
-              Approach
-            </p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
-              How We Teach Online
-            </h2>
-          </motion.div>
-          <motion.div variants={staggerContainer} className="grid gap-4 md:gap-8 max-w-5xl mx-auto md:grid-cols-3">
-            {teachingPoints.map((item) => (
-              <motion.div
-                key={item.title}
-                variants={staggerItem}
-                className="bg-gray-50 rounded-2xl overflow-hidden grid grid-cols-1"
-              >
-                <div className="aspect-[4/3] relative shrink-0">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 767px) 100px, 384px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex flex-col justify-center p-4 md:p-5">
-                  <h3 className="text-black text-base md:text-xl font-semibold mb-1">{item.title}</h3>
-                  <p className="text-gray-600 text-xs md:text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="py-14 md:py-28"
-      >
-        <div className="container mx-auto px-4">
-          <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <p className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-2 md:mb-4">
-              Testimonials
-            </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
               What Our Students Say
             </h2>
@@ -299,9 +236,6 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <p className="text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-[0.2em] mb-2 md:mb-4">
-              Audience
-            </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
               Who Is This For
             </h2>
@@ -321,7 +255,64 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      <GalleryCTA />
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="py-16 md:py-28 bg-black text-white"
+      >
+        <div className="container mx-auto px-4 text-center mb-8 md:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-2 md:mb-4">
+            Our Academy Gallery
+          </h2>
+          <p className="text-sm md:text-base text-gray-400 max-w-xl mx-auto">
+            Glimpses from our academy batches and events
+          </p>
+        </div>
+
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-2">
+          {[
+            "/images/gallery/gallery1.jpg",
+            "/images/gallery/gallery2.jpg",
+            "/images/gallery/gallery3.jpg",
+            "/images/gallery/gallery4.jpg",
+            "/images/gallery/gallery5.jpg",
+            "/images/gallery/gallery6.jpg",
+            "/images/gallery/gallery7.jpg",
+            "/images/gallery/gallery8.jpg",
+            "/images/gallery/gallery9.jpg",
+            "/images/gallery/gallery10.jpg",
+            "/images/gallery/gallery11.jpg",
+            "/images/gallery/gallery12.jpg",
+            "/images/gallery/gallery13.jpg",
+            "/images/gallery/gallery14.jpg",
+            "/images/gallery/gallery15.jpg",
+            "/images/gallery/gallery16.jpg",
+            "/images/gallery/gallery17.jpg",
+            "/images/gallery/gallery18.jpg",
+            "/images/gallery/gallery19.jpg",
+            "/images/gallery/gallery20.jpg",
+            "/images/gallery/gallery21.jpg",
+            "/images/gallery/gallery22.jpg",
+            "/images/gallery/gallery23.jpg",
+            "/images/gallery/gallery24.jpg",
+            "/images/gallery/gallery25.jpg",
+            "/images/gallery/gallery26.jpg",
+            "/images/gallery/gallery27.jpg",
+          ].map((src, i) => (
+            <div key={src} className="break-inside-avoid mb-2 overflow-hidden rounded-xl bg-gray-900">
+              <Image
+                src={src}
+                alt={`Gallery photo ${i + 1}`}
+                width={600}
+                height={400}
+                sizes="(max-width: 639px) 50vw, (max-width: 1023px) 33vw, 25vw"
+                className="w-full h-auto"
+              />
+            </div>
+          ))}
+        </div>
+      </motion.section>
     </div>
   );
 }
