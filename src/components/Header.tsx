@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,6 +16,15 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -25,15 +35,26 @@ export default function Header() {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    const onPop = () => setIsOpen(false);
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100"
+      className={[
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        scrolled
+          ? "bg-white/90 backdrop-blur-xl border-b border-gray-100 shadow-sm"
+          : "bg-transparent border-b border-transparent",
+      ].join(" ")}
     >
-      <div className="h-[72px] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <Link href="/" className="flex items-center shrink-0" onClick={() => setIsOpen(false)}>
+      <div className="max-w-7xl mx-auto h-[72px] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <Link href="/" className="flex items-center shrink-0">
           <Image
             src="/images/logo.png"
             alt="Photriya Academy"
@@ -45,15 +66,30 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-black rounded-lg hover:bg-gray-50 transition-all"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={[
+                  "relative px-3 py-2 text-sm font-medium rounded-lg transition-all",
+                  active
+                    ? "text-black"
+                    : "text-gray-500 hover:text-black hover:bg-gray-50",
+                ].join(" ")}
+              >
+                {link.label}
+                {active && (
+                  <motion.div
+                    layoutId="nav-active"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-5 rounded-full bg-black"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         <button
@@ -88,29 +124,31 @@ export default function Header() {
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="md:hidden overflow-hidden border-t border-gray-100 bg-white"
           >
-            <nav className="max-h-[calc(100svh-72px)] overflow-y-auto px-3 py-3 space-y-1">
+            <nav className="max-h-[calc(100svh-72px)] overflow-y-auto px-5 py-4 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3.5 text-base font-medium text-gray-800 rounded-xl active:bg-gray-100 hover:bg-gray-50 transition-colors"
+                  className={[
+                    "block px-3 py-3 text-base font-medium rounded-xl transition-colors",
+                    pathname === link.href
+                      ? "text-black bg-gray-100"
+                      : "text-gray-600 hover:text-black hover:bg-gray-50",
+                  ].join(" ")}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="grid grid-cols-2 gap-2 pt-3 pb-1 px-1">
+              <div className="grid grid-cols-2 gap-3 pt-4 px-1">
                 <Link
                   href="/courses/online-photography-course"
-                  onClick={() => setIsOpen(false)}
-                  className="flex h-11 items-center justify-center rounded-xl bg-black text-sm font-medium text-white"
+                  className="flex h-12 items-center justify-center rounded-xl bg-black text-sm font-medium text-white active:bg-gray-800 transition-colors"
                 >
                   Learn Online
                 </Link>
                 <Link
                   href="/courses/offline-photography-course"
-                  onClick={() => setIsOpen(false)}
-                  className="flex h-11 items-center justify-center rounded-xl border border-gray-200 text-sm font-medium text-black"
+                  className="flex h-12 items-center justify-center rounded-xl border border-gray-200 text-sm font-medium text-black active:bg-gray-50 transition-colors"
                 >
                   Learn Offline
                 </Link>
