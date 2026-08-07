@@ -60,7 +60,7 @@ export default function Hero() {
       {/* ======================================== */}
       {/* MOBILE — Premium Editorial Single Column */}
       {/* ======================================== */}
-      <section className="relative overflow-hidden bg-white px-6 pt-10 pb-0 md:hidden">
+      <section className="relative overflow-hidden bg-white px-6 pt-6 pb-0 md:hidden">
         {/* Content column */}
         <div className="relative z-10 w-full max-w-[360px]">
           <motion.div
@@ -77,7 +77,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className={`${playfair.className} mt-4 max-w-[320px] text-[2.2rem] font-semibold leading-[0.95] -tracking-[0.01em] text-black`}
+            className={`${playfair.className} mt-3 max-w-[320px] text-[2.2rem] font-semibold leading-[0.95] -tracking-[0.01em] text-black`}
           >
             Professional Photography &amp; Videography Course
           </motion.h1>
@@ -86,7 +86,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className={`${script.className} mt-1.5 text-[1.35rem] leading-tight text-gray-500`}
+            className={`${script.className} mt-1 text-[1.35rem] leading-tight text-gray-500`}
           >
             Master your creative vision
           </motion.p>
@@ -95,7 +95,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.55, delay: 0.48 }}
-            className="mt-3 max-w-[300px] text-[15px] leading-relaxed text-gray-600 line-clamp-3"
+            className="mt-2 max-w-[300px] text-[15px] leading-relaxed text-gray-600 line-clamp-3"
           >
             Master Photography, Videography, &amp; Business in One Comprehensive Course. An intensive 2-month program created for aspiring photographers, content creators, and creative professionals who want to build a strong foundation and gain practical industry-ready skills.
           </motion.p>
@@ -105,7 +105,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.58 }}
-            className="mt-4 flex justify-between gap-1"
+            className="mt-3 flex justify-between gap-1"
           >
             {stats.map((stat) => (
               <Stat key={stat.label} {...stat} />
@@ -116,12 +116,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.66 }}
-            className="mt-4 flex flex-col gap-2"
+            className="mt-3 flex flex-col items-start gap-2"
           >
             <Link href="/courses/online-photography-course">
               <button
                 type="button"
-                className="h-12 px-8 rounded-xl bg-black text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                className="h-10 px-5 rounded-xl bg-black text-xs font-medium text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Learn Online
               </button>
@@ -129,7 +129,7 @@ export default function Hero() {
             <Link href="/courses/offline-photography-course">
               <button
                 type="button"
-                className="h-12 px-8 rounded-xl border border-gray-200 bg-white text-sm font-medium text-black transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                className="h-10 px-5 rounded-xl border border-gray-200 bg-white text-xs font-medium text-black transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Learn Offline
               </button>
@@ -142,7 +142,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.74 }}
-          className="-mx-6 -mt-36 overflow-hidden"
+          className="-mx-6 -mt-24 overflow-hidden"
         >
           <div className="w-[135%] -ml-[17.5%]">
             <Image
