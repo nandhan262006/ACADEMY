@@ -263,7 +263,7 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4 text-center mb-8 md:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-2 md:mb-4">
-            Our Academy Gallery
+            Academy Gallery
           </h2>
           <p className="text-sm md:text-base text-gray-400 max-w-xl mx-auto">
             Glimpses from our academy batches and events
