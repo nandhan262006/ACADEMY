@@ -25,7 +25,17 @@ const stats = [
   { value: 200, label: "Workshops", suffix: "+" },
 ];
 
-function Stat({ value, suffix, label }: { value: number; suffix?: string; label: string }) {
+function Stat({
+  value,
+  suffix,
+  label,
+  center,
+}: {
+  value: number;
+  suffix?: string;
+  label: string;
+  center?: boolean;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
   const [display, setDisplay] = useState(0);
@@ -42,7 +52,7 @@ function Stat({ value, suffix, label }: { value: number; suffix?: string; label:
   }, [inView, value]);
 
   return (
-    <div ref={ref} className="min-w-0 text-left">
+    <div ref={ref} className={`min-w-0 ${center ? "text-center" : "text-left"}`}>
       <div className="text-base font-bold tabular-nums leading-none text-black">
         {display}
         {suffix}
@@ -159,26 +169,105 @@ export default function Hero() {
       </section>
 
       {/* ======================================== */}
-      {/* DESKTOP — Side image, left text column   */}
+      {/* TABLET — Centered content, image banner  */}
+      {/* (also covers iPad Pro / small laptops)    */}
       {/* ======================================== */}
-      <section className="relative hidden overflow-hidden bg-white md:block lg:min-h-[calc(100svh-72px)]">
-        {/* Tablet + desktop: stacked then side-by-side */}
+      <section className="relative hidden overflow-hidden bg-white md:block xl:hidden">
+        <div className="container mx-auto px-6 pt-12 sm:pt-14">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="mx-auto mb-4 w-fit inline-flex items-center gap-2 rounded-full border border-gray-300 px-3 py-1 text-xs font-medium uppercase tracking-[0.15em] text-gray-600"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-black" />
+            Designed by Photriya Venky
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className={`${playfair.className} mx-auto max-w-[580px] text-center text-[2.4rem] font-semibold leading-[1.02] -tracking-[0.01em] text-black sm:text-[2.75rem]`}
+          >
+            Professional Photography &amp; Videography Course
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className={`${script.className} mt-2 text-center text-[1.5rem] leading-tight text-gray-500`}
+          >
+            Master your creative vision
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.55, delay: 0.48 }}
+            className="mx-auto mt-4 max-w-[520px] text-center text-[15px] leading-relaxed text-gray-600"
+          >
+            Master Photography, Videography, &amp; Business in One Comprehensive Course. An intensive 2-month program created for aspiring photographers, content creators, and creative professionals who want to build a strong foundation and gain practical industry-ready skills.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.58 }}
+            className="mx-auto mt-6 grid max-w-[560px] grid-cols-4 gap-3"
+          >
+            {stats.map((stat) => (
+              <Stat key={stat.label} {...stat} center />
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.66 }}
+            className="mt-7 flex flex-row items-center justify-center gap-3"
+          >
+            <Link href="/courses/online-photography-course">
+              <button
+                type="button"
+                className="h-11 px-7 rounded-xl bg-black text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Learn Online
+              </button>
+            </Link>
+            <Link href="/courses/offline-photography-course">
+              <button
+                type="button"
+                className="h-11 px-7 rounded-xl border border-gray-200 bg-white text-sm font-medium text-black transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Learn Offline
+              </button>
+            </Link>
+          </motion.div>
+        </div>
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="relative h-[min(42vw,280px)] min-h-[168px] w-full lg:hidden"
+          transition={{ duration: 0.6, delay: 0.74 }}
+          className="relative mt-10 h-[320px] overflow-hidden sm:h-[400px]"
         >
           <Image
             src="/images/hero.png"
             alt="Photography"
             fill
-            className="object-cover object-center"
             priority
+            className="object-cover object-center"
             sizes="100vw"
           />
         </motion.div>
+      </section>
 
+      {/* ======================================== */}
+      {/* DESKTOP — Side image, left text column   */}
+      {/* ======================================== */}
+      <section className="relative hidden overflow-hidden bg-white xl:block xl:min-h-[calc(100svh-72px)]">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}

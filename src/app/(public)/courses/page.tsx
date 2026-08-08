@@ -11,35 +11,41 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, ArrowRight, Monitor, MapPin } from "lucide-react";
-import { SITE_URL } from "@/lib/site";
+import { buildSeo, itemListSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildSeo({
   title: "Our Courses",
   description:
     "Learn photography and videography from industry experts with comprehensive courses available online and offline at Photriya Academy.",
-  alternates: {
-    canonical: "/courses",
-  },
-  openGraph: {
-    title: "Our Courses | Photriya Academy",
-    description:
-      "Learn photography from industry experts with comprehensive courses designed for all skill levels.",
-    url: `${SITE_URL}/courses`,
-    type: "website",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Photriya Academy",
-      },
-    ],
-  },
-};
+  path: "/courses",
+  keywords: [
+    "photography course",
+    "online photography course",
+    "photography classes in Hyderabad",
+    "videography course",
+    "photo editing course",
+    "Photriya Academy",
+  ],
+});
 
 export default function CoursesPage() {
+  const courseListJsonLd = itemListSchema([
+    {
+      name: "Online Photography & Videography Course",
+      url: "https://academy.photriya.com/courses/online-photography-course",
+    },
+    {
+      name: "Photography Foundation Course",
+      url: "https://academy.photriya.com/courses/offline-photography-course",
+    },
+  ]);
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseListJsonLd) }}
+      />
       <section className="bg-navy relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
         <div className="container mx-auto px-4 py-14 sm:py-20 md:py-28 lg:py-32 relative">
@@ -57,8 +63,8 @@ export default function CoursesPage() {
         <div className="container mx-auto px-4">
           <div className="grid gap-6 sm:gap-8 md:gap-10">
             <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="grid lg:grid-cols-2">
-                <div className="relative h-52 sm:h-64 md:h-72 lg:h-auto lg:min-h-[320px]">
+              <div className="grid md:grid-cols-2">
+                <div className="relative h-52 sm:h-64 md:h-auto md:min-h-[320px]">
                   <Image
                     src="/images/online-course.jpg"
                     alt="Online Photography & Videography Course"
@@ -109,8 +115,8 @@ export default function CoursesPage() {
             </Card>
 
             <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="grid lg:grid-cols-2">
-                <div className="relative h-52 sm:h-64 md:h-72 lg:h-auto lg:min-h-[320px] lg:order-2">
+              <div className="grid md:grid-cols-2">
+                <div className="relative h-52 sm:h-64 md:h-auto md:min-h-[320px] md:order-2">
                   <Image
                     src="/images/gallery/gallery1.jpg"
                     alt="Photography Foundation Course"
@@ -118,7 +124,7 @@ export default function CoursesPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-5 sm:p-8 md:p-10 flex flex-col justify-center lg:order-1">
+                <div className="p-5 sm:p-8 md:p-10 flex flex-col justify-center md:order-1">
                   <div className="flex flex-wrap items-center gap-2 mb-4">
                     <Badge className="bg-gold text-navy border-0">Featured</Badge>
                     <Badge variant="outline" className="border-gray-200 text-gray-600">

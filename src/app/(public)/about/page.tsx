@@ -8,31 +8,20 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Camera, Heart, Target, Award, MapPin, Phone, Mail } from "lucide-react";
-import { SITE_URL } from "@/lib/site";
+import { buildSeo, personSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildSeo({
   title: "About Us",
   description:
     "We don't just teach photography. We build photographers. Learn about Photriya Academy's mission to transform aspiring photographers into confident professionals.",
-  alternates: {
-    canonical: "/about",
-  },
-  openGraph: {
-    title: "About Us | Photriya Academy",
-    description:
-      "Learn about our mission to make photography education accessible to everyone.",
-    url: `${SITE_URL}/about`,
-    type: "website",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Photriya Academy",
-      },
-    ],
-  },
-};
+  path: "/about",
+  keywords: [
+    "Photriya Academy",
+    "photography academy Hyderabad",
+    "Photriya Venky",
+    "learn photography",
+  ],
+});
 
 const values = [
   {
@@ -110,8 +99,13 @@ const socialLinks = [
 ];
 
 export default function AboutPage() {
+  const personJsonLd = personSchema();
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <section className="bg-black relative overflow-hidden">
         <div className="container mx-auto px-4 py-14 sm:py-20 md:py-24 lg:py-28 relative">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight leading-tight">

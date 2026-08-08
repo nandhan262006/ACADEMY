@@ -3,16 +3,13 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Footer } from "@/components/public/footer";
-import VideoPopup from "@/components/VideoPopup";
 import {
   SITE_URL,
   SITE_NAME,
   SITE_TITLE,
   SITE_DESCRIPTION,
-  CONTACT_PHONE,
-  CONTACT_EMAIL,
-  CONTACT_LOCATION,
 } from "@/lib/site";
+import { organizationSchema, websiteSchema } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +34,21 @@ export const metadata: Metadata = {
     "DSLR training",
     "photography academy",
     "learn photography online",
+    "photography classes in Hyderabad",
+    "videography course",
+    "photo editing course",
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   alternates: {
     canonical: "/",
   },
@@ -71,30 +82,8 @@ export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: SITE_NAME,
-  url: SITE_URL,
-  logo: `${SITE_URL}/images/logo.png`,
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: CONTACT_PHONE,
-    email: CONTACT_EMAIL,
-    contactType: "customer service",
-    areaServed: "IN",
-    availableLanguage: "English",
-  },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: CONTACT_LOCATION,
-    addressCountry: "IN",
-  },
-  sameAs: [
-    "https://www.instagram.com/photriyaacademy/",
-    "https://www.facebook.com/photriyaacademy",
-  ],
-};
+const organizationJsonLd = organizationSchema();
+const websiteJsonLd = websiteSchema();
 
 export default function RootLayout({
   children,
@@ -112,6 +101,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
       </head>
       <body className="min-h-full flex flex-col overflow-x-hidden">
         <Header />
@@ -119,7 +112,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <VideoPopup />
       </body>
     </html>
   );

@@ -19,7 +19,8 @@ import {
   Palette,
   TrendingUp,
 } from "lucide-react";
-import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { courseSchema, faqSchema, buildSeo } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 const photographyTopics = [
   "Fundamentals of Photography",
@@ -186,27 +187,20 @@ export async function generateMetadata({
   const course = courses.find((c) => c.slug === slug);
   if (!course) return {};
 
-  return {
+  return buildSeo({
     title: course.title,
     description: course.description,
-    alternates: {
-      canonical: `/courses/${course.slug}`,
-    },
-    openGraph: {
-      title: `${course.title} | ${SITE_NAME}`,
-      description: course.description,
-      url: `${SITE_URL}/courses/${course.slug}`,
-      type: "website",
-      images: [
-        {
-          url: "/opengraph-image",
-          width: 1200,
-          height: 630,
-          alt: course.title,
-        },
-      ],
-    },
-  };
+    path: `/courses/${course.slug}`,
+    keywords: [
+      course.mode === "online"
+        ? "online photography course"
+        : "photography classes in Hyderabad",
+      "photography course",
+      "videography course",
+      "learn photography",
+      "Photriya Academy",
+    ],
+  });
 }
 
 export default async function CourseDetailPage({
@@ -218,29 +212,29 @@ export default async function CourseDetailPage({
   const course = courses.find((c) => c.slug === slug);
   if (!course) notFound();
 
-  const courseJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Course",
+  const courseJsonLd = courseSchema({
     name: course.title,
+    slug: course.slug,
     description: course.description,
-    provider: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      sameAs: SITE_URL,
-    },
-    offers: {
-      "@type": "Offer",
-      price: String(course.price),
-      priceCurrency: "INR",
-      category: "Paid",
-    },
-  };
+    price: course.price,
+    mode: course.mode,
+    image:
+      course.mode === "online"
+        ? `${SITE_URL}/images/online-course.jpg`
+        : `${SITE_URL}/images/about.avif`,
+  });
+
+  const faqsJsonLd = faqSchema(course.faqs);
 
   return (
     <div className="flex flex-col">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqsJsonLd) }}
       />
 
       <section className="bg-black relative overflow-hidden">

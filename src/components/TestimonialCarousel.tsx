@@ -26,7 +26,7 @@ export default function TestimonialCarousel() {
         {videos.map((src, i) => (
           <div
             key={i}
-            className="w-[min(240px,70vw)] shrink-0 snap-center md:w-[260px] lg:w-[280px]"
+            className="w-[clamp(12rem,10rem+10vw,17.5rem)] shrink-0 snap-center"
           >
             <TestimonialVideo src={src} />
           </div>

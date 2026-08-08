@@ -1,23 +1,31 @@
 import type { Metadata } from "next";
 import FaqContent from "./faq-view";
-import { SITE_URL } from "@/lib/site";
+import { faqs } from "./faq-data";
+import { buildSeo, faqSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildSeo({
   title: "Frequently Asked Questions",
   description:
     "Answers to common questions about Photriya Academy's photography courses — prerequisites, cameras, online classes, certificates, refunds and more.",
-  alternates: {
-    canonical: "/faq",
-  },
-  openGraph: {
-    title: "FAQ | Photriya Academy",
-    description:
-      "Answers to common questions about our photography courses.",
-    url: `${SITE_URL}/faq`,
-    type: "website",
-  },
-};
+  path: "/faq",
+  keywords: [
+    "photography course FAQ",
+    "online photography classes questions",
+    "photography course certificate",
+    "Photriya Academy",
+  ],
+});
 
 export default function FAQPage() {
-  return <FaqContent />;
+  const faqItems = faqs.map((f) => ({ q: f.question, a: f.answer }));  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema(faqItems)),
+        }}
+      />
+      <FaqContent />
+    </>
+  );
 }
