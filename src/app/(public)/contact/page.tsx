@@ -16,14 +16,16 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = buildSeo({
-  title: "Contact Us",
+  title: "Contact Us | Photography Academy in Hyderabad & Telangana",
   description:
-    "Have questions about our photography courses? Contact Photriya Academy via phone, email, or our contact form and we'll respond within 24 hours.",
+    "Contact Photriya Academy — one of the best photography academies in Hyderabad and Telangana — via phone, email, or our contact form and we'll respond within 24 hours.",
   path: "/contact",
   keywords: [
     "contact Photriya Academy",
+    "photography academy in Hyderabad contact",
+    "photography classes Hyderabad",
     "photography course inquiry",
-    "photography classes Hyderabad contact",
+    "photography academy Telangana",
   ],
 });
 
@@ -48,6 +50,11 @@ export default function ContactPage() {
       latitude: GEO_LATITUDE,
       longitude: GEO_LONGITUDE,
     },
+    areaServed: [
+      { "@type": "City", name: "Hyderabad" },
+      { "@type": "AdministrativeArea", name: "Telangana" },
+      { "@type": "Country", name: "India" },
+    ],
     openingHours: "Mo-Fr 08:00-18:30",
     priceRange: "₹₹",
   };

@@ -4,12 +4,13 @@ import { faqs } from "./faq-data";
 import { buildSeo, faqSchema } from "@/lib/seo";
 
 export const metadata: Metadata = buildSeo({
-  title: "Frequently Asked Questions",
+  title: "Photography Course FAQs | Hyderabad & Telangana",
   description:
-    "Answers to common questions about Photriya Academy's photography courses — prerequisites, cameras, online classes, certificates, refunds and more.",
+    "Answers to common questions about photography courses at Photriya Academy — one of the best photography academies in Hyderabad and Telangana. Prerequisites, cameras, online classes, certificates and more.",
   path: "/faq",
   keywords: [
     "photography course FAQ",
+    "best photography academy in Hyderabad FAQ",
     "online photography classes questions",
     "photography course certificate",
     "Photriya Academy",

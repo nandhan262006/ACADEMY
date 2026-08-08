@@ -78,7 +78,41 @@ export default function HomeView() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeInUp}
         transition={{ duration: 0.6 }}
-        className="py-14 md:py-20 bg-black text-white"
+        className="py-14 md:py-24 bg-white"
+      >
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight text-center mb-8">
+            The Best Photography Academy in Hyderabad &amp; Telangana
+          </h2>
+          <div className="space-y-4 text-sm md:text-base leading-relaxed text-gray-600">
+            <p>
+              Photriya Academy is one of the best photography academies in
+              Hyderabad and across Telangana, offering professional photography
+              and videography courses to students from all over the state —
+              including Secunderabad, Warangal, Karimnagar, Nizamabad, and every
+              district. Whether you&apos;re a beginner looking for the best
+              photography course in Telangana or a working professional seeking
+              advanced training, our 2-month program covers camera techniques,
+              lighting, composition, editing, and business skills.
+            </p>
+            <p>
+              Our classroom is located in Madhapur, Hyderabad, and our live
+              online classes bring the same industry-expert training to
+              learners anywhere in Telangana and India. With 25+ years of
+              teaching experience and 3,000+ students trained, Photriya Academy
+              is trusted as a top photography institute in Telangana.
+            </p>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeIn}
+        transition={{ duration: 0.6 }}
+        className="py-14 md:py-28 bg-gray-50"
       >
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-3 md:mb-4">

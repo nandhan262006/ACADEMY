@@ -188,14 +188,15 @@ export async function generateMetadata({
   if (!course) return {};
 
   return buildSeo({
-    title: course.title,
+    title: `${course.title} in Hyderabad & Telangana`,
     description: course.description,
     path: `/courses/${course.slug}`,
     keywords: [
       course.mode === "online"
-        ? "online photography course"
+        ? "online photography course in Hyderabad"
         : "photography classes in Hyderabad",
-      "photography course",
+      "best photography course in Telangana",
+      "photography course in Hyderabad",
       "videography course",
       "learn photography",
       "Photriya Academy",

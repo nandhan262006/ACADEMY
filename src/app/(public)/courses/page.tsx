@@ -14,14 +14,15 @@ import { Clock, ArrowRight, Monitor, MapPin } from "lucide-react";
 import { buildSeo, itemListSchema } from "@/lib/seo";
 
 export const metadata: Metadata = buildSeo({
-  title: "Our Courses",
+  title: "Photography Courses in Hyderabad & Telangana",
   description:
-    "Learn photography and videography from industry experts with comprehensive courses available online and offline at Photriya Academy.",
+    "Discover the best photography courses in Hyderabad and across Telangana. Learn photography and videography from industry experts with comprehensive online and offline courses at Photriya Academy.",
   path: "/courses",
   keywords: [
-    "photography course",
-    "online photography course",
+    "best photography course in Hyderabad",
+    "photography course in Telangana",
     "photography classes in Hyderabad",
+    "online photography course",
     "videography course",
     "photo editing course",
     "Photriya Academy",
@@ -50,11 +51,12 @@ export default function CoursesPage() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
         <div className="container mx-auto px-4 py-14 sm:py-20 md:py-28 lg:py-32 relative">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
-            Our Courses
+            Photography Courses in Hyderabad &amp; Telangana
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
-            Learn photography from industry experts with comprehensive courses
-            designed for all skill levels. Available both online and offline.
+            Learn photography from industry experts with the best photography
+            courses in Hyderabad and across Telangana. Available both online and
+            offline.
           </p>
         </div>
       </section>

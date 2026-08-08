@@ -5,13 +5,16 @@ import { homeFaqs } from "@/lib/home-faqs";
 import { SITE_DESCRIPTION } from "@/lib/site";
 
 export const metadata: Metadata = buildSeo({
-  title: "Photriya Academy | Online Photography Courses",
+  title: "Best Photography Academy in Hyderabad & Telangana | Photriya Academy",
   description: SITE_DESCRIPTION,
   path: "/",
   keywords: [
-    "photography course",
-    "online photography class",
+    "best photography academy in Hyderabad",
+    "best photography academy in Telangana",
+    "best photography course in Hyderabad",
     "photography classes in Hyderabad",
+    "photography academy in Telangana",
+    "online photography class",
     "DSLR training",
     "photography academy",
     "learn photography online",

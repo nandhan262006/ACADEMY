@@ -3,14 +3,15 @@ import BatchesContent from "./batches-view";
 import { buildSeo } from "@/lib/seo";
 
 export const metadata: Metadata = buildSeo({
-  title: "Available Batches",
+  title: "Photography Batches in Hyderabad & Telangana",
   description:
-    "Choose an online or offline photography batch that fits your schedule. Limited seats to ensure personalized attention at Photriya Academy.",
+    "Join upcoming photography course batches in Hyderabad and across Telangana. Choose an online or offline photography batch that fits your schedule at Photriya Academy.",
   path: "/batches",
   keywords: [
-    "photography batch",
-    "online photography batch",
+    "photography batch in Hyderabad",
     "photography classes Hyderabad",
+    "online photography batch",
+    "photography academy Telangana",
     "next batch start date",
     "Photriya Academy",
   ],

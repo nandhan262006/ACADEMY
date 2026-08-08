@@ -11,13 +11,15 @@ import { Camera, Heart, Target, Award, MapPin, Phone, Mail } from "lucide-react"
 import { buildSeo, personSchema } from "@/lib/seo";
 
 export const metadata: Metadata = buildSeo({
-  title: "About Us",
+  title: "About Us | Best Photography Academy in Hyderabad & Telangana",
   description:
-    "We don't just teach photography. We build photographers. Learn about Photriya Academy's mission to transform aspiring photographers into confident professionals.",
+    "Photriya Academy is one of the best photography academies in Hyderabad and Telangana. We don't just teach photography — we build photographers with 25+ years of industry expertise.",
   path: "/about",
   keywords: [
+    "best photography academy in Hyderabad",
     "Photriya Academy",
     "photography academy Hyderabad",
+    "photography academy Telangana",
     "Photriya Venky",
     "learn photography",
   ],

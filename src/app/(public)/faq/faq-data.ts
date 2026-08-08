@@ -1,5 +1,11 @@
 export const faqs = [
   {
+    question:
+      "Is Photriya Academy the best photography academy in Hyderabad and Telangana?",
+    answer:
+      "Photriya Academy is one of the best photography academies in Hyderabad and across Telangana. With 25+ years of teaching experience, 3,000+ students trained, and live online classes reaching every district in Telangana, we offer professional photography and videography training recognized for its practical, career-focused approach.",
+  },
+  {
     question: "What are the prerequisites for this course?",
     answer:
       "No prior photography experience is required. This course is designed for beginners who want to learn photography from scratch. All you need is a DSLR or mirrorless camera.",

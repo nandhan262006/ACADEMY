@@ -2,10 +2,11 @@ export const SITE_URL = "https://academy.photriya.com";
 
 export const SITE_NAME = "Photriya Academy";
 
-export const SITE_TITLE = "Photriya Academy | Online Photography Courses";
+export const SITE_TITLE =
+  "Best Photography Academy in Hyderabad & Telangana | Photriya Academy";
 
 export const SITE_DESCRIPTION =
-  "Photriya Academy is one of the best photography academies in Hyderabad, offering professional photography training in camera techniques, lighting, composition, editing, and visual storytelling.";
+  "Photriya Academy is the best photography academy in Hyderabad and across Telangana, offering professional photography and videography courses with training in camera techniques, lighting, composition, editing, and visual storytelling.";
 
 export const CONTACT_PHONE = "+91 9618855959";
 

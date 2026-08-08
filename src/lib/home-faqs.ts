@@ -1,5 +1,9 @@
 export const homeFaqs = [
   {
+    q: "Is Photriya Academy the best photography academy in Hyderabad and Telangana?",
+    a: "Photriya Academy is widely regarded as one of the best photography academies in Hyderabad and across Telangana. With 25+ years of teaching experience, over 3,000 students trained, and live online classes reaching every district in Telangana, we combine professional-grade training with practical, career-ready skills in photography, videography, and editing.",
+  },
+  {
     q: "How much does the photography course cost?",
     a: "The Online Photography & Videography Course costs ₹37,000 and the Offline Photography Foundation Course costs ₹43,000. Both are 2-month comprehensive programs covering photography, videography, editing, and marketing.",
   },
