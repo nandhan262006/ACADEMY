@@ -156,7 +156,7 @@ export function Footer() {
                   href="/courses/offline-photography-course"
                   className="text-white/70 hover:text-white text-sm transition-colors"
                 >
-                  Photography Foundation Course (Offline)
+                  Offline Photography &amp; Videography Course
                 </Link>
               </li>
               <li>

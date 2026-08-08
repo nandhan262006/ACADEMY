@@ -36,7 +36,7 @@ export default function CoursesPage() {
       url: "https://academy.photriya.com/courses/online-photography-course",
     },
     {
-      name: "Photography Foundation Course",
+      name: "Offline Photography & Videography Course",
       url: "https://academy.photriya.com/courses/offline-photography-course",
     },
   ]);
@@ -121,7 +121,7 @@ export default function CoursesPage() {
                 <div className="relative h-52 sm:h-64 md:h-auto md:min-h-[320px] md:order-2">
                   <Image
                     src="/images/gallery/gallery1.jpg"
-                    alt="Photography Foundation Course"
+                    alt="Offline Photography & Videography Course"
                     fill
                     className="object-cover"
                   />
@@ -135,7 +135,7 @@ export default function CoursesPage() {
                     </Badge>
                   </div>
                   <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy mb-3 sm:mb-4 tracking-tight">
-                    Photography Foundation Course
+                    Offline Photography &amp; Videography Course
                   </h2>
                   <p className="text-gray-600 mb-6 leading-relaxed">
                     In-person training at our Madhapur studio in Hyderabad. Build a strong foundation with extensive hands-on practice, live demonstrations, camera practice, lighting setups, and personalized guidance from Photriya Venky.

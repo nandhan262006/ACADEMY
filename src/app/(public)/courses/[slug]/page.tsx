@@ -137,7 +137,7 @@ const onlineCourse: CourseData = {
 };
 
 const offlineCourse: CourseData = {
-  title: "Photography Foundation Course",
+  title: "Offline Photography & Videography Course",
   slug: "offline-photography-course",
   price: 43000,
   mode: "offline",

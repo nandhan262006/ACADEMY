@@ -5,7 +5,7 @@ export const homeFaqs = [
   },
   {
     q: "How much does the photography course cost?",
-    a: "The Online Photography & Videography Course costs ₹37,000 and the Offline Photography Foundation Course costs ₹43,000. Both are 2-month comprehensive programs covering photography, videography, editing, and marketing.",
+    a: "The Online Photography & Videography Course costs ₹37,000 and the Offline Photography & Videography Course costs ₹43,000. Both are 2-month comprehensive programs covering photography, videography, editing, and marketing.",
   },
   {
     q: "How long is the photography course at Photriya Academy?",
