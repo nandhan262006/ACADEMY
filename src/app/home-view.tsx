@@ -112,7 +112,7 @@ export default function HomeView() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
         transition={{ duration: 0.6 }}
-        className="py-14 md:py-28 bg-gray-50"
+        className="py-14 md:py-28 bg-black text-white"
       >
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-3 md:mb-4">
