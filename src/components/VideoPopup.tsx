@@ -8,17 +8,26 @@ const DISMISS_KEY = "photriya-video-popup-dismissed";
 export default function VideoPopup() {
   const [show, setShow] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [closing, setClosing] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const dismiss = useCallback(() => {
     setShow(false);
     setPlaying(false);
+    setClosing(false);
     try {
       sessionStorage.setItem(DISMISS_KEY, "1");
     } catch {
       // ignore storage errors
     }
   }, []);
+
+  const fadeOut = useCallback(() => {
+    setClosing(true);
+    setTimeout(() => {
+      dismiss();
+    }, 400);
+  }, [dismiss]);
 
   useEffect(() => {
     try {
@@ -58,7 +67,9 @@ export default function VideoPopup() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-400 ${
+        closing ? "opacity-0" : "opacity-100"
+      }`}
       onClick={dismiss}
       role="dialog"
       aria-modal="true"
@@ -103,6 +114,7 @@ export default function VideoPopup() {
             ref={videoRef}
             controls
             playsInline
+            onEnded={fadeOut}
             className="w-[280px] sm:w-[360px] aspect-[9/16]"
             src="/images/popupvideo.mp4"
           />

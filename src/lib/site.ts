@@ -6,7 +6,7 @@ export const SITE_TITLE =
   "Best Photography Academy in Hyderabad & Telangana | Photriya Academy";
 
 export const SITE_DESCRIPTION =
-  "Photriya Academy is the best photography academy in Hyderabad and across Telangana, offering professional photography and videography courses with training in camera techniques, lighting, composition, editing, and visual storytelling.";
+  "Photriya Academy – Hyderabad's premier photography academy offering professional photography courses, practical training, and hands-on learning to turn your passion for photography into a career.";
 
 export const CONTACT_PHONE = "+91 9618855959";
 
