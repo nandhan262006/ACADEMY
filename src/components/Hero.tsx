@@ -258,7 +258,7 @@ export default function Hero() {
             alt="Photography"
             fill
             priority
-            className="object-cover object-center"
+            className="scale-[1.3] object-contain object-top"
             sizes="100vw"
           />
         </motion.div>

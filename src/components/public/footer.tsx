@@ -55,8 +55,8 @@ export function Footer() {
             <Image
               src="/images/logo.png"
               alt="Photriya Academy"
-              width={150}
-              height={50}
+              width={89}
+              height={56}
               className="h-14 w-auto"
             />
             <p className="text-white/70 text-sm leading-relaxed">

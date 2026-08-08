@@ -54,15 +54,21 @@ export default function Header() {
       ].join(" ")}
     >
       <div className="max-w-7xl mx-auto h-[72px] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <Link href="/" className="flex items-center shrink-0">
+        <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
             src="/images/logo.png"
             alt="Photriya Academy"
-            width={42}
+            width={67}
             height={42}
-            className="h-[42px] w-auto"
+            className="h-[42px] w-[67px]"
             priority
           />
+          <span className="hidden sm:block text-lg font-bold leading-tight text-black">
+            Photriya
+            <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-gray-500">
+              Academy
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">

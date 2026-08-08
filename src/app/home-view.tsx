@@ -272,47 +272,49 @@ export default function HomeView() {
           </p>
         </div>
 
-        <div className="columns-2 sm:columns-3 lg:columns-4 gap-2">
-          {[
-            "/images/gallery/gallery1.jpg",
-            "/images/gallery/gallery2.jpg",
-            "/images/gallery/gallery3.jpg",
-            "/images/gallery/gallery4.jpg",
-            "/images/gallery/gallery5.jpg",
-            "/images/gallery/gallery6.jpg",
-            "/images/gallery/gallery7.jpg",
-            "/images/gallery/gallery8.jpg",
-            "/images/gallery/gallery9.jpg",
-            "/images/gallery/gallery10.jpg",
-            "/images/gallery/gallery11.jpg",
-            "/images/gallery/gallery12.jpg",
-            "/images/gallery/gallery13.jpg",
-            "/images/gallery/gallery14.jpg",
-            "/images/gallery/gallery15.jpg",
-            "/images/gallery/gallery16.jpg",
-            "/images/gallery/gallery17.jpg",
-            "/images/gallery/gallery18.jpg",
-            "/images/gallery/gallery19.jpg",
-            "/images/gallery/gallery20.jpg",
-            "/images/gallery/gallery21.jpg",
-            "/images/gallery/gallery22.jpg",
-            "/images/gallery/gallery23.jpg",
-            "/images/gallery/gallery24.jpg",
-            "/images/gallery/gallery25.jpg",
-            "/images/gallery/gallery26.jpg",
-            "/images/gallery/gallery27.jpg",
-          ].map((src, i) => (
-            <div key={src} className="break-inside-avoid mb-2 overflow-hidden rounded-xl bg-gray-900">
-              <Image
-                src={src}
-                alt={`Gallery photo ${i + 1}`}
-                width={600}
-                height={400}
-                sizes="(max-width: 639px) 50vw, (max-width: 1023px) 33vw, 25vw"
-                className="w-full h-auto"
-              />
-            </div>
-          ))}
+        <div className="container mx-auto px-4">
+          <div className="columns-2 sm:columns-3 lg:columns-4 gap-2">
+            {[
+              "/images/gallery/gallery1.jpg",
+              "/images/gallery/gallery2.jpg",
+              "/images/gallery/gallery3.jpg",
+              "/images/gallery/gallery4.jpg",
+              "/images/gallery/gallery5.jpg",
+              "/images/gallery/gallery6.jpg",
+              "/images/gallery/gallery7.jpg",
+              "/images/gallery/gallery8.jpg",
+              "/images/gallery/gallery9.jpg",
+              "/images/gallery/gallery10.jpg",
+              "/images/gallery/gallery11.jpg",
+              "/images/gallery/gallery12.jpg",
+              "/images/gallery/gallery13.jpg",
+              "/images/gallery/gallery14.jpg",
+              "/images/gallery/gallery15.jpg",
+              "/images/gallery/gallery16.jpg",
+              "/images/gallery/gallery17.jpg",
+              "/images/gallery/gallery18.jpg",
+              "/images/gallery/gallery19.jpg",
+              "/images/gallery/gallery20.jpg",
+              "/images/gallery/gallery21.jpg",
+              "/images/gallery/gallery22.jpg",
+              "/images/gallery/gallery23.jpg",
+              "/images/gallery/gallery24.jpg",
+              "/images/gallery/gallery25.jpg",
+              "/images/gallery/gallery26.jpg",
+              "/images/gallery/gallery27.jpg",
+            ].map((src, i) => (
+              <div key={src} className="break-inside-avoid mb-2 overflow-hidden rounded-xl bg-gray-900">
+                <Image
+                  src={src}
+                  alt={`Gallery photo ${i + 1}`}
+                  width={600}
+                  height={400}
+                  sizes="(max-width: 639px) 50vw, (max-width: 1023px) 33vw, 25vw"
+                  className="w-full h-auto"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </motion.section>
 
