@@ -147,14 +147,14 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Full-bleed illustration — pulled up tight */}
+        {/* Full-bleed image */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.74 }}
-          className="-mx-6 -mt-24 overflow-hidden"
+          className="-mx-6 mt-8 overflow-hidden"
         >
-          <div className="w-[135%] -ml-[17.5%]">
+          <div className="w-full">
             <Image
               src="/images/hero-2026.png"
               alt="Photography"
@@ -162,7 +162,7 @@ export default function Hero() {
               height={1024}
               className="h-auto w-full object-cover"
               priority
-              sizes="135vw"
+              sizes="100vw"
             />
           </div>
         </motion.div>
