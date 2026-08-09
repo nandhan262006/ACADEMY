@@ -1,48 +1,25 @@
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { CourseDetailsForm } from "@/components/admin/course-details-form";
+import { getAllCourseDetails } from "@/lib/course-details";
 
-export default function AdminCoursesPage() {
+export const dynamic = "force-dynamic";
+
+export default async function AdminCoursesPage() {
+  const courses = await getAllCourseDetails();
+
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-navy">Courses</h1>
-          <p className="text-gray-600">Manage your photography courses.</p>
-        </div>
+      <div>
+        <h1 className="text-2xl font-bold text-navy">Course Details</h1>
+        <p className="text-gray-600">
+          Edit the details shown across the website for each course.
+        </p>
       </div>
 
-      <Card>
-        <CardContent className="p-0">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Title</TableHead>
-                <TableHead>Slug</TableHead>
-                <TableHead>Duration</TableHead>
-                <TableHead>Price</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell colSpan={5} className="text-center py-8 text-gray-500">
-                  No courses created yet.
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+      <div className="grid gap-6 xl:grid-cols-2">
+        {courses.map((course) => (
+          <CourseDetailsForm key={course.slug} course={course} />
+        ))}
+      </div>
     </div>
   );
 }

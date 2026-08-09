@@ -1,59 +1,57 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL, NEXT_BATCH_START } from "@/lib/site";
-
-const LAST_MODIFIED = "2026-08-08";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes: MetadataRoute.Sitemap = [
+  const now = new Date();
+
+  return [
     {
-      url: `${SITE_URL}`,
+      url: SITE_URL,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 1,
-      lastModified: LAST_MODIFIED,
     },
     {
       url: `${SITE_URL}/courses`,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
-      lastModified: LAST_MODIFIED,
     },
     {
       url: `${SITE_URL}/courses/online-photography-course`,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
-      lastModified: NEXT_BATCH_START,
     },
     {
       url: `${SITE_URL}/courses/offline-photography-course`,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
-      lastModified: NEXT_BATCH_START,
     },
     {
       url: `${SITE_URL}/batches`,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
-      lastModified: LAST_MODIFIED,
     },
     {
       url: `${SITE_URL}/about`,
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
-      lastModified: LAST_MODIFIED,
     },
     {
       url: `${SITE_URL}/faq`,
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.6,
-      lastModified: LAST_MODIFIED,
     },
     {
       url: `${SITE_URL}/contact`,
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
-      lastModified: LAST_MODIFIED,
     },
   ];
-
-  return routes;
 }

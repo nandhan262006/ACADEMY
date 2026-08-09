@@ -19,7 +19,7 @@ import {
 } from "./site";
 
 const baseImage = {
-  url: `${SITE_URL}/opengraph-image`,
+  url: `${SITE_URL}/opengraph-image.jpg`,
   width: 1200,
   height: 630,
   alt: SITE_NAME,
@@ -102,7 +102,7 @@ export function organizationSchema() {
     alternateName: "Photriya Photography Academy",
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
-    image: `${SITE_URL}/images/logo.png`,
+    image: `${SITE_URL}/opengraph-image.jpg`,
     description: SITE_DESCRIPTION,
     slogan: "Learn photography from industry experts.",
     telephone: CONTACT_PHONE,

@@ -12,8 +12,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { useCourseDetails } from "@/lib/use-course-details";
 
 export default function ContactContent() {
+  const courses = useCourseDetails();
+  const online = courses?.find((c) => c.mode === "online");
+  const offline = courses?.find((c) => c.mode === "offline");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -116,20 +120,30 @@ export default function ContactContent() {
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                    Online: ₹37,000
+                    Online: ₹{(online?.price ?? 37000).toLocaleString("en-IN")}
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                    Offline: ₹43,000
+                    Offline: ₹{(offline?.price ?? 43000).toLocaleString("en-IN")}
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                    Duration: 8 Weeks
+                    Duration: {online?.duration ?? "8 Weeks"}
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                    Schedule: Mon-Fri, 8:00 AM - 10:30 AM IST
+                    Schedule: {online?.schedule ?? "Mon-Fri, 8:00 AM - 10:30 AM IST"}
                   </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                    Batch Starts: {online?.batchStartsFrom ?? "15 January 2026"}
+                  </li>
+                  {offline && (
+                    <li className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                      Offline Location: {offline.location}
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>

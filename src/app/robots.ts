@@ -8,11 +8,15 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: [
         "/admin",
+        "/admin/",
         "/dashboard",
+        "/dashboard/",
         "/login",
         "/signup",
+        "/api/",
       ],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

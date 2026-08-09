@@ -84,7 +84,7 @@ export function Footer() {
                 X
               </a>
               <a
-                href="https://www.facebook.com/PhotriyaPhotography/"
+                href="https://www.facebook.com/photriyaacademy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition-all text-white/80 hover:text-white"

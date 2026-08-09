@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { courseSchema, faqSchema, buildSeo } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
+import { getCourseDetails } from "@/lib/course-details";
 
 const photographyTopics = [
   "Fundamentals of Photography",
@@ -213,11 +214,13 @@ export default async function CourseDetailPage({
   const course = courses.find((c) => c.slug === slug);
   if (!course) notFound();
 
+  const details = await getCourseDetails(slug).catch(() => null);
+
   const courseJsonLd = courseSchema({
     name: course.title,
     slug: course.slug,
     description: course.description,
-    price: course.price,
+    price: details?.price ?? course.price,
     mode: course.mode,
     image:
       course.mode === "online"
@@ -250,18 +253,18 @@ export default async function CourseDetailPage({
               </p>
               <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
                 <span className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-gray-500" /> 2 Months
+                  <Clock className="h-4 w-4 text-gray-500" /> {details?.duration ?? "2 Months"}
                 </span>
                 <span className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-gray-500" /> Mon–Fri
+                  <Calendar className="h-4 w-4 text-gray-500" /> {details?.schedule ?? "Monday to Friday"}
                 </span>
                 <span className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-gray-500" /> 8:00 AM – 10:30 AM IST
+                  <Clock className="h-4 w-4 text-gray-500" /> {details?.timings ?? "8:00 AM – 10:30 AM IST"}
                 </span>
               </div>
               <div className="flex flex-wrap items-center gap-4 pt-1">
                 <span className="text-h2 font-bold text-white">
-                  ₹{course.price.toLocaleString()}
+                  ₹{(details?.price ?? course.price).toLocaleString("en-IN")}
                 </span>
                 <a
                   href={`https://wa.me/919618855959?text=${encodeURIComponent(`Hi Photriya Academy! I'm interested in the ${course.mode === "online" ? "Online" : "Offline"} Course — ${course.title}. Please share the details.`)}`}
@@ -425,12 +428,13 @@ export default async function CourseDetailPage({
                   <h3 className="text-lg font-bold text-navy">Course Details</h3>
                   <div className="space-y-4">
                     {[
-                      { icon: BookOpen, label: "Duration", value: "2 Months" },
-                      { icon: Calendar, label: "Schedule", value: "Monday to Friday" },
-                      { icon: Clock, label: "Timings", value: "8:00 AM – 10:30 AM IST" },
+                      { icon: BookOpen, label: "Duration", value: details?.duration ?? "2 Months" },
+                      { icon: Calendar, label: "Schedule", value: details?.schedule ?? "Monday to Friday" },
+                      { icon: Clock, label: "Timings", value: details?.timings ?? "8:00 AM – 10:30 AM IST" },
                       course.mode === "online"
-                        ? { icon: Monitor, label: "Mode", value: "Live via Zoom" }
-                        : { icon: MapPin, label: "Location", value: "Madhapur, Hyderabad" },
+                        ? { icon: Monitor, label: "Mode", value: details?.location ?? "Live via Zoom" }
+                        : { icon: MapPin, label: "Location", value: details?.location ?? "Madhapur, Hyderabad" },
+                      { icon: Calendar, label: "Batch Starts From", value: details?.batchStartsFrom ?? "15 January 2026" },
                     ].map((item) => (
                       <div key={item.label} className="flex items-center gap-3">
                         <item.icon className="h-4 w-4 text-gray-400 shrink-0" />
@@ -443,7 +447,9 @@ export default async function CourseDetailPage({
                   </div>
                   <Separator />
                   <div>
-                    <span className="text-3xl font-bold text-navy">₹{course.price.toLocaleString()}</span>
+                    <span className="text-3xl font-bold text-navy">
+                      ₹{(details?.price ?? course.price).toLocaleString("en-IN")}
+                    </span>
                     <span className="text-sm text-gray-400 ml-1">/ complete course</span>
                   </div>
                   <a

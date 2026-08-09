@@ -7,6 +7,7 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import Image from "next/image";
 import VideoPopup from "@/components/VideoPopup";
 import { homeFaqs } from "@/lib/home-faqs";
+import { useCourseDetails } from "@/lib/use-course-details";
 
 const learningOutcomes = [
   "Confidently operate DSLR and Mirrorless cameras",
@@ -17,27 +18,6 @@ const learningOutcomes = [
   "Build an efficient editing workflow",
   "Market yourself effectively on social media",
   "Handle small to medium-scale photography and videography assignments independently",
-];
-
-const topics = [
-  "History of Photography",
-  "Working Principles of DSLR & Mirrorless Cameras",
-  "Genres & Basic Language of Photography",
-  "Exposure (Shutter, Aperture & ISO)",
-  "Metering Modes & Exposure Compensation",
-  "Colours & White Balance",
-  "Focusing Modes",
-  "Depth of Field & Lenses",
-  "Compositions",
-  "Types of Lights & Light Modifiers",
-  "Indoor & Outdoor Lighting Techniques",
-  "Tabletop Photography",
-  "Basics of Cinematography",
-  "Manipulating & Retouching on Photoshop",
-  "Introduction to Lightroom",
-  "Introduction to Premiere Pro",
-  "Wedding Photography",
-  "Branding & Marketing",
 ];
 
 const audience = [
@@ -68,6 +48,9 @@ const staggerItem = {
 };
 
 export default function HomeView() {
+  const courses = useCourseDetails();
+  const online = courses?.find((c) => c.mode === "online");
+
   return (
     <div className="flex flex-col">
       <Hero />
@@ -117,11 +100,49 @@ export default function HomeView() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
         transition={{ duration: 0.6 }}
+        className="py-section-xl bg-gray-50"
+      >
+        <div className="container mx-auto px-gutter">
+          <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
+            <h2 className="text-h1 font-bold text-black tracking-tight">
+              Course Duration
+            </h2>
+          </motion.div>
+          <motion.div variants={staggerContainer} className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-[clamp(0.75rem,1vw+0.5rem,1.5rem)] max-w-4xl mx-auto">
+            {[
+              { label: "Duration", value: online?.duration ?? "2 Months" },
+              { label: "Schedule", value: online?.schedule ?? "Monday – Friday" },
+              { label: "Timings", value: online?.timings ?? "8:00 AM – 10:30 AM (IST)" },
+              { label: "Batch Starts From", value: online?.batchStartsFrom ?? "15 January 2026" },
+            ].map((item) => (
+              <motion.div
+                key={item.label}
+                variants={staggerItem}
+                className="bg-white rounded-2xl border border-gray-100 p-[clamp(1.25rem,1.5vw+0.8rem,1.75rem)] text-center"
+              >
+                <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">
+                  {item.label}
+                </p>
+                <p className="text-body-lg font-bold text-black leading-snug">
+                  {item.value}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={fadeIn}
+        transition={{ duration: 0.6 }}
         className="py-section-xl bg-black text-white"
       >
         <div className="container mx-auto px-gutter text-center">
           <h2 className="text-h1 font-bold text-white tracking-tight mb-3 md:mb-4">
-            Online &amp; Offline
+            Course Contents
           </h2>
           <p className="text-body text-gray-400 max-w-xl mx-auto mb-8 md:mb-10 leading-relaxed">
             Whether you choose to learn Online or Offline, you&apos;ll follow the same comprehensive curriculum designed to help you confidently take on professional assignments.
@@ -140,43 +161,6 @@ export default function HomeView() {
               Offline Course
             </Link>
           </div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={fadeIn}
-        transition={{ duration: 0.6 }}
-        className="py-section-xl bg-gray-50"
-      >
-        <div className="container mx-auto px-gutter">
-          <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <h2 className="text-h1 font-bold text-black tracking-tight">
-              Course Duration
-            </h2>
-          </motion.div>
-          <motion.div variants={staggerContainer} className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[clamp(0.75rem,1vw+0.5rem,1.5rem)] max-w-4xl mx-auto">
-            {[
-              { label: "Duration", value: "2 Months" },
-              { label: "Schedule", value: "Monday – Friday" },
-              { label: "Timings", value: "8:00 AM – 10:30 AM (IST)" },
-            ].map((item) => (
-              <motion.div
-                key={item.label}
-                variants={staggerItem}
-                className="bg-white rounded-2xl border border-gray-100 p-[clamp(1.5rem,2vw+0.9rem,2rem)] text-center"
-              >
-                <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">
-                  {item.label}
-                </p>
-                <p className="text-h3 font-bold text-black">
-                  {item.value}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </motion.section>
 
@@ -212,40 +196,6 @@ export default function HomeView() {
                 </span>
                 <span className="text-body text-gray-700 leading-relaxed">
                   {item}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="py-section-xl bg-gray-50"
-      >
-        <div className="container mx-auto px-gutter">
-          <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-6 md:mb-16">
-            <h2 className="text-h1 font-bold text-black tracking-tight">
-              Course Contents
-            </h2>
-          </motion.div>
-          <motion.div
-            variants={staggerContainer}
-            className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[clamp(0.375rem,0.6vw+0.25rem,0.75rem)] max-w-5xl mx-auto"
-          >
-            {topics.map((topic, index) => (
-              <motion.div
-                key={index}
-                variants={staggerItem}
-                className="flex items-center gap-2.5 p-[clamp(0.5rem,0.6vw+0.3rem,1rem)] rounded-xl bg-white border border-gray-100 hover:border-black/20 hover:shadow-md transition-all group"
-              >
-                <span className="flex-shrink-0 w-[clamp(1.5rem,1.5vw+0.9rem,2rem)] h-[clamp(1.5rem,1.5vw+0.9rem,2rem)] bg-black text-white rounded-lg flex items-center justify-center text-body-xs font-bold">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="text-body-sm font-medium text-gray-700 group-hover:text-black transition-colors leading-tight">
-                  {topic}
                 </span>
               </motion.div>
             ))}

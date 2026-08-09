@@ -1,31 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import {
-  LayoutDashboard,
-  Users,
-  BookOpen,
-  UserCheck,
-  CreditCard,
-  Calendar,
-  Bell,
-  MessageSquare,
-  Settings,
-} from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
 const sidebarLinks = [
-  { href: "/admin", label: "Overview", icon: LayoutDashboard },
-  { href: "/admin/students", label: "Students", icon: Users },
   { href: "/admin/courses", label: "Courses", icon: BookOpen },
-  { href: "/admin/batches", label: "Batches", icon: Calendar },
-  { href: "/admin/enrollments", label: "Enrollments", icon: UserCheck },
-  { href: "/admin/payments", label: "Payments", icon: CreditCard },
-  { href: "/admin/attendance", label: "Attendance", icon: Calendar },
-  { href: "/admin/announcements", label: "Announcements", icon: Bell },
-  { href: "/admin/inquiries", label: "Inquiries", icon: MessageSquare },
 ];
 
 export default function AdminLayout({
@@ -51,15 +33,6 @@ export default function AdminLayout({
             </Link>
           ))}
         </nav>
-        <div className="p-4 border-t">
-          <Link
-            href="/dashboard"
-            className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            <Settings className="h-5 w-5" />
-            Student View
-          </Link>
-        </div>
       </aside>
 
       <main className="flex-1 bg-gray-50 p-6">{children}</main>

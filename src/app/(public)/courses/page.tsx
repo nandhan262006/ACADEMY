@@ -10,8 +10,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, ArrowRight, Monitor, MapPin } from "lucide-react";
+import { Clock, ArrowRight, Monitor, MapPin, Calendar } from "lucide-react";
 import { buildSeo, itemListSchema } from "@/lib/seo";
+import { getAllCourseDetails } from "@/lib/course-details";
 
 export const metadata: Metadata = buildSeo({
   title: "Photography Courses in Hyderabad & Telangana",
@@ -29,7 +30,14 @@ export const metadata: Metadata = buildSeo({
   ],
 });
 
-export default function CoursesPage() {
+export default async function CoursesPage() {
+  const allDetails = await getAllCourseDetails().catch(() => []);
+  const detailsBySlug = new Map(
+    allDetails.map((d) => [d.slug, d])
+  );
+  const online = detailsBySlug.get("online-photography-course");
+  const offline = detailsBySlug.get("offline-photography-course");
+
   const courseListJsonLd = itemListSchema([
     {
       name: "Online Photography & Videography Course",
@@ -90,9 +98,9 @@ export default function CoursesPage() {
                   </p>
                   <div className="flex flex-wrap gap-5 mb-6">
                     {[
-                      { icon: Clock, label: "2 Months" },
-                      { icon: Monitor, label: "Live via Zoom" },
-                      { icon: Clock, label: "Mon-Fri, 8:00 AM IST" },
+                      { icon: Clock, label: online?.duration ?? "2 Months" },
+                      { icon: Monitor, label: online?.location ?? "Live via Zoom" },
+                      { icon: Calendar, label: online?.schedule ?? "Monday to Friday" },
                     ].map((item) => (
                       <div
                         key={item.label}
@@ -104,7 +112,9 @@ export default function CoursesPage() {
                     ))}
                   </div>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <span className="text-h3 font-bold text-navy">₹37,000</span>
+                    <span className="text-h3 font-bold text-navy">
+                      ₹{(online?.price ?? 37000).toLocaleString("en-IN")}
+                    </span>
                     <Link href="/courses/online-photography-course" className="w-full sm:w-auto">
                       <Button className="w-full sm:w-auto bg-navy hover:bg-navy-light text-white shadow-sm">
                         View Details
@@ -142,9 +152,9 @@ export default function CoursesPage() {
                   </p>
                   <div className="flex flex-wrap gap-5 mb-6">
                     {[
-                      { icon: Clock, label: "2 Months" },
-                      { icon: MapPin, label: "Madhapur, Hyderabad" },
-                      { icon: Clock, label: "Mon-Fri, 8:00 AM IST" },
+                      { icon: Clock, label: offline?.duration ?? "2 Months" },
+                      { icon: MapPin, label: offline?.location ?? "Madhapur, Hyderabad" },
+                      { icon: Calendar, label: offline?.schedule ?? "Monday to Friday" },
                     ].map((item) => (
                       <div
                         key={item.label}
@@ -156,7 +166,9 @@ export default function CoursesPage() {
                     ))}
                   </div>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <span className="text-h3 font-bold text-navy">₹43,000</span>
+                    <span className="text-h3 font-bold text-navy">
+                      ₹{(offline?.price ?? 43000).toLocaleString("en-IN")}
+                    </span>
                     <Link href="/courses/offline-photography-course" className="w-full sm:w-auto">
                       <Button className="w-full sm:w-auto bg-navy hover:bg-navy-light text-white shadow-sm">
                         View Details
