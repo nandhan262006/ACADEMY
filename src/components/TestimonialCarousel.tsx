@@ -22,7 +22,7 @@ export default function TestimonialCarousel() {
       </div>
 
       {/* Tablet+: horizontal snap scroll */}
-      <div className="-mx-4 hidden gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory scrollbar-none sm:flex md:gap-6 md:mx-0 md:px-0">
+      <div className="-mx-gutter hidden gap-4 overflow-x-auto px-gutter pb-4 snap-x snap-mandatory scrollbar-none sm:flex md:gap-6 md:mx-0 md:px-0">
         {videos.map((src, i) => (
           <div
             key={i}

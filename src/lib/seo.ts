@@ -284,65 +284,6 @@ export function faqSchema(faqs: { q: string; a: string }[]) {
   };
 }
 
-export function breadcrumbSchema(items: { name: string; path: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: item.name,
-      item: `${SITE_URL}${item.path}`,
-    })),
-  };
-}
-
-export function articleSchema({
-  headline,
-  description,
-  path,
-  datePublished,
-  dateModified,
-  category,
-  author = FOUNDER_NAME,
-}: {
-  headline: string;
-  description: string;
-  path: string;
-  datePublished: string;
-  dateModified: string;
-  category: string;
-  author?: string;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline,
-    description,
-    url: `${SITE_URL}${path}`,
-    datePublished,
-    dateModified,
-    inLanguage: "en-IN",
-    articleSection: category,
-    image: `${SITE_URL}/opengraph-image`,
-    author: {
-      "@type": "Person",
-      name: author,
-      url: `${SITE_URL}/about`,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/images/logo.png`,
-      },
-    },
-    mainEntityOfPage: `${SITE_URL}${path}`,
-  };
-}
-
 export function itemListSchema<T extends { name: string; url: string }>(items: T[]) {
   return {
     "@context": "https://schema.org",

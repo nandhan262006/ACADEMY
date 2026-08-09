@@ -49,11 +49,11 @@ export default function CoursesPage() {
       />
       <section className="bg-navy relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="container mx-auto px-4 py-14 sm:py-20 md:py-28 lg:py-32 relative">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
+        <div className="container mx-auto px-gutter py-hero relative">
+          <h1 className="text-display font-bold text-white mb-4 tracking-tight">
             Photography Courses in Hyderabad &amp; Telangana
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
+          <p className="text-lead text-gray-300 max-w-2xl leading-relaxed">
             Learn photography from industry experts with the best photography
             courses in Hyderabad and across Telangana. Available both online and
             offline.
@@ -61,12 +61,12 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 md:py-24 lg:py-28">
-        <div className="container mx-auto px-4">
+      <section className="py-section-xl">
+        <div className="container mx-auto px-gutter">
           <div className="grid gap-6 sm:gap-8 md:gap-10">
             <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
               <div className="grid md:grid-cols-2">
-                <div className="relative h-52 sm:h-64 md:h-auto md:min-h-[320px]">
+                <div className="relative h-[clamp(13rem,45vw,16rem)] md:h-auto md:min-h-[320px]">
                   <Image
                     src="/images/online-course.jpg"
                     alt="Online Photography & Videography Course"
@@ -74,7 +74,7 @@ export default function CoursesPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-5 sm:p-8 md:p-10 flex flex-col justify-center">
+                <div className="p-[clamp(1.25rem,2vw+0.8rem,2.5rem)] flex flex-col justify-center">
                   <div className="flex flex-wrap items-center gap-2 mb-4">
                     <Badge className="bg-gold text-navy border-0">Featured</Badge>
                     <Badge variant="outline" className="border-gray-200 text-gray-600">
@@ -82,10 +82,10 @@ export default function CoursesPage() {
                       Online
                     </Badge>
                   </div>
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy mb-3 sm:mb-4 tracking-tight">
+                  <h2 className="text-h2 font-bold text-navy mb-3 sm:mb-4 tracking-tight">
                     Online Photography & Videography Course
                   </h2>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-body text-gray-600 mb-6 leading-relaxed">
                     Live sessions streamed via Zoom from our classroom. Master Photography, Videography, Editing, and Business — all from the comfort of your home. Same curriculum, same instructor, same schedule as the offline course.
                   </p>
                   <div className="flex flex-wrap gap-5 mb-6">
@@ -104,7 +104,7 @@ export default function CoursesPage() {
                     ))}
                   </div>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <span className="text-2xl sm:text-3xl font-bold text-navy">₹37,000</span>
+                    <span className="text-h3 font-bold text-navy">₹37,000</span>
                     <Link href="/courses/online-photography-course" className="w-full sm:w-auto">
                       <Button className="w-full sm:w-auto bg-navy hover:bg-navy-light text-white shadow-sm">
                         View Details
@@ -118,7 +118,7 @@ export default function CoursesPage() {
 
             <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
               <div className="grid md:grid-cols-2">
-                <div className="relative h-52 sm:h-64 md:h-auto md:min-h-[320px] md:order-2">
+                <div className="relative h-[clamp(13rem,45vw,16rem)] md:h-auto md:min-h-[320px] md:order-2">
                   <Image
                     src="/images/gallery/gallery1.jpg"
                     alt="Offline Photography & Videography Course"
@@ -126,7 +126,7 @@ export default function CoursesPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-5 sm:p-8 md:p-10 flex flex-col justify-center md:order-1">
+                <div className="p-[clamp(1.25rem,2vw+0.8rem,2.5rem)] flex flex-col justify-center md:order-1">
                   <div className="flex flex-wrap items-center gap-2 mb-4">
                     <Badge className="bg-gold text-navy border-0">Featured</Badge>
                     <Badge variant="outline" className="border-gray-200 text-gray-600">
@@ -134,10 +134,10 @@ export default function CoursesPage() {
                       Offline
                     </Badge>
                   </div>
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy mb-3 sm:mb-4 tracking-tight">
+                  <h2 className="text-h2 font-bold text-navy mb-3 sm:mb-4 tracking-tight">
                     Offline Photography &amp; Videography Course
                   </h2>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-body text-gray-600 mb-6 leading-relaxed">
                     In-person training at our Madhapur studio in Hyderabad. Build a strong foundation with extensive hands-on practice, live demonstrations, camera practice, lighting setups, and personalized guidance from Photriya Venky.
                   </p>
                   <div className="flex flex-wrap gap-5 mb-6">
@@ -156,7 +156,7 @@ export default function CoursesPage() {
                     ))}
                   </div>
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <span className="text-2xl sm:text-3xl font-bold text-navy">₹43,000</span>
+                    <span className="text-h3 font-bold text-navy">₹43,000</span>
                     <Link href="/courses/offline-photography-course" className="w-full sm:w-auto">
                       <Button className="w-full sm:w-auto bg-navy hover:bg-navy-light text-white shadow-sm">
                         View Details
@@ -168,7 +168,7 @@ export default function CoursesPage() {
               </div>
             </Card>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
               {[
                 {
                   title: "Advanced Photography",

@@ -18,19 +18,19 @@ export default function FaqContent() {
       {/* Hero */}
       <section className="bg-navy relative overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="container mx-auto px-4 py-14 sm:py-20 md:py-28 lg:py-32 relative">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
+        <div className="container mx-auto px-gutter py-hero relative">
+          <h1 className="text-display font-bold text-white mb-4 tracking-tight">
             Frequently Asked Questions
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
+          <p className="text-lead text-gray-300 max-w-2xl leading-relaxed">
             Find answers to common questions about our photography courses.
           </p>
         </div>
       </section>
 
       {/* FAQ List */}
-      <section className="py-12 sm:py-16 md:py-24 lg:py-28">
-        <div className="container mx-auto px-4">
+      <section className="py-section-xl">
+        <div className="container mx-auto px-gutter">
           <div className="max-w-3xl mx-auto space-y-3">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
@@ -49,7 +49,7 @@ export default function FaqContent() {
                   >
                     <div className="flex items-center justify-between gap-4">
                       <CardTitle
-                        className={`text-base font-medium pr-4 transition-colors ${
+                        className={`text-body font-medium pr-4 transition-colors ${
                           isOpen ? "text-navy" : "text-gray-700"
                         }`}
                       >

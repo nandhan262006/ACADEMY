@@ -239,13 +239,13 @@ export default async function CourseDetailPage({
       />
 
       <section className="bg-black relative overflow-hidden">
-        <div className="container mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-20 relative">
+        <div className="container mx-auto px-gutter py-hero-sm relative">
           <div className="flex flex-col lg:flex-row lg:items-center gap-6 md:gap-10">
             <div className="flex-1 space-y-4 md:space-y-5">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight pt-4">
+              <h1 className="text-h1 font-bold text-white tracking-tight leading-tight pt-4">
                 {course.title}
               </h1>
-              <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-xl">
+              <p className="text-body text-gray-400 leading-relaxed max-w-xl">
                 {course.description}
               </p>
               <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
@@ -259,8 +259,8 @@ export default async function CourseDetailPage({
                   <Clock className="h-4 w-4 text-gray-500" /> 8:00 AM – 10:30 AM IST
                 </span>
               </div>
-              <div className="flex items-center gap-4 pt-1">
-                <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+              <div className="flex flex-wrap items-center gap-4 pt-1">
+                <span className="text-h2 font-bold text-white">
                   ₹{course.price.toLocaleString()}
                 </span>
                 <a
@@ -288,16 +288,16 @@ export default async function CourseDetailPage({
         </div>
       </section>
 
-      <section className="py-12 md:py-28">
-        <div className="container mx-auto px-4">
+      <section className="py-section-xl">
+        <div className="container mx-auto px-gutter">
           <div className="grid md:grid-cols-3 gap-8 md:gap-14">
             <div className="md:col-span-2">
-              <h2 className="text-xl md:text-3xl font-bold text-navy mb-4 md:mb-6 tracking-tight">
+              <h2 className="text-h2 font-bold text-navy mb-4 md:mb-6 tracking-tight">
                 {course.mode === "online"
                   ? "One Course. Two Ways to Learn."
                   : "About This Course"}
               </h2>
-              <div className="text-gray-600 space-y-3 md:space-y-5 leading-relaxed">
+              <div className="text-body text-gray-600 space-y-3 md:space-y-5 leading-relaxed">
                 {course.intro.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
@@ -306,13 +306,13 @@ export default async function CourseDetailPage({
               {course.mode === "online" && (
                 <>
                   <Separator className="my-6 md:my-10" />
-                  <h2 className="text-xl md:text-3xl font-bold text-navy mb-1 md:mb-2 tracking-tight">
+                  <h2 className="text-h2 font-bold text-navy mb-1 md:mb-2 tracking-tight">
                     How We Teach Online
                   </h2>
-                  <p className="text-gray-500 mb-4 md:mb-8">
+                  <p className="text-body text-gray-500 mb-4 md:mb-8">
                     Multi-camera live streams bring the classroom to your screen
                   </p>
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8">
+                  <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-[clamp(1rem,1vw+0.8rem,2rem)]">
                     {[
                       { title: "Multiple Perspectives", desc: "Multi-camera streams let you see the classroom, the camera viewfinder, and the editing screen simultaneously.", image: "/images/multiple-perspectives.jpg" },
                       { title: "Live Editing", desc: "Watch every retouch and adjustment in real time on your own screen — no squinting at a projector.", image: "/images/live-editing.jpg" },
@@ -328,9 +328,9 @@ export default async function CourseDetailPage({
                             className="object-cover"
                           />
                         </div>
-                        <div className="p-4 sm:p-5">
-                          <h3 className="text-black text-base sm:text-lg md:text-xl font-semibold mb-1">{item.title}</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                        <div className="p-[clamp(1rem,0.5vw+0.9rem,1.25rem)]">
+                          <h3 className="text-black text-h3 font-semibold mb-1">{item.title}</h3>
+                          <p className="text-body-sm text-gray-600 leading-relaxed">{item.desc}</p>
                         </div>
                       </div>
                     ))}
@@ -340,10 +340,10 @@ export default async function CourseDetailPage({
 
               <Separator className="my-6 md:my-10" />
 
-              <h2 className="text-xl md:text-3xl font-bold text-navy mb-1 md:mb-2 tracking-tight">
+              <h2 className="text-h2 font-bold text-navy mb-1 md:mb-2 tracking-tight">
                 Course Content
               </h2>
-              <p className="text-gray-500 mb-4 md:mb-8">
+              <p className="text-body text-gray-500 mb-4 md:mb-8">
                 Comprehensive curriculum covering Photography, Videography, Editing, and Marketing
               </p>
 
@@ -358,7 +358,7 @@ export default async function CourseDetailPage({
                           <Icon className="h-5 w-5 text-gold" />
                           {category.title}
                         </h3>
-                        <div className="grid md:grid-cols-2 gap-2">
+                        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-2">
                           {category.topics.map((topic, index) => (
                             <div
                               key={index}
@@ -421,7 +421,7 @@ export default async function CourseDetailPage({
 
             <div>
               <Card className="sticky top-24 border border-gray-100 shadow-md overflow-hidden">
-                <div className="p-6 space-y-5">
+                <div className="p-[clamp(1.25rem,1.5vw+0.9rem,1.5rem)] space-y-5">
                   <h3 className="text-lg font-bold text-navy">Course Details</h3>
                   <div className="space-y-4">
                     {[
@@ -463,10 +463,10 @@ export default async function CourseDetailPage({
         </div>
       </section>
 
-      <section className="py-10 md:py-24 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section className="py-section-lg bg-gray-50">
+        <div className="container mx-auto px-gutter">
           <div className="text-center mb-6 md:mb-14">
-            <h2 className="text-xl md:text-3xl font-bold text-navy tracking-tight">
+            <h2 className="text-h2 font-bold text-navy tracking-tight">
               Photriya Academy &mdash; {course.mode === "online" ? "Online" : "Offline"} Course FAQ
             </h2>
           </div>
@@ -476,8 +476,8 @@ export default async function CourseDetailPage({
                 key={index}
                 className="group bg-white rounded-xl border border-gray-100"
               >
-                <summary className="flex items-center justify-between p-4 md:p-5 cursor-pointer list-none">
-                  <span className="text-[13px] md:text-base font-medium text-navy pr-4">
+                <summary className="flex items-center justify-between p-[clamp(1rem,0.5vw+0.9rem,1.25rem)] cursor-pointer list-none">
+                  <span className="text-body font-medium text-navy pr-4">
                     {faq.q}
                   </span>
                   <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center group-open:bg-navy group-open:text-white transition-colors">
@@ -500,7 +500,7 @@ export default async function CourseDetailPage({
                   </span>
                 </summary>
                 <div className="px-5 pb-5">
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-body-sm text-gray-600 leading-relaxed">
                     {faq.a}
                   </p>
                 </div>

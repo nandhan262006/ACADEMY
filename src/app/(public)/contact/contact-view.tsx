@@ -43,11 +43,11 @@ export default function ContactContent() {
       {/* Hero */}
       <section className="bg-navy relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="container mx-auto px-4 py-14 sm:py-20 md:py-28 lg:py-32 relative">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
+        <div className="container mx-auto px-gutter py-hero relative">
+          <h1 className="text-display font-bold text-white mb-4 tracking-tight">
             Contact Us
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
+          <p className="text-lead text-gray-300 max-w-2xl leading-relaxed">
             Have questions? We&apos;d love to hear from you. Send us a message
             and we&apos;ll respond as soon as possible.
           </p>
@@ -55,12 +55,12 @@ export default function ContactContent() {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-12 sm:py-16 md:py-24 lg:py-28">
-        <div className="container mx-auto px-4">
+      <section className="py-section-xl">
+        <div className="container mx-auto px-gutter">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 max-w-5xl mx-auto">
             {/* Contact Info */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-8 tracking-tight">
+              <h2 className="text-h2 font-bold text-navy mb-8 tracking-tight">
                 Get in Touch
               </h2>
               <div className="space-y-6">
@@ -109,14 +109,18 @@ export default function ContactContent() {
                 })}
               </div>
 
-              <div className="mt-10 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+              <div className="mt-10 p-[clamp(1.5rem,2vw+1rem,1.75rem)] bg-gray-50 rounded-2xl border border-gray-100">
                 <h3 className="font-semibold text-navy mb-3">
                   Course Details
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                    Online: ₹37,000 · Offline: ₹43,000
+                    Online: ₹37,000
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                    Offline: ₹43,000
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" />
@@ -125,10 +129,6 @@ export default function ContactContent() {
                   <li className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" />
                     Schedule: Mon-Fri, 8:00 AM - 10:30 AM IST
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                    Next Batch: January 15, 2026
                   </li>
                 </ul>
               </div>

@@ -53,11 +53,11 @@ function Stat({
 
   return (
     <div ref={ref} className={`min-w-0 ${center ? "text-center" : "text-left"}`}>
-      <div className="text-base font-bold tabular-nums leading-none text-black">
+      <div className="text-2xl font-extrabold tabular-nums leading-none text-black sm:text-[1.75rem]">
         {display}
         {suffix}
       </div>
-      <div className="mt-0.5 text-[9px] leading-tight text-gray-500">
+      <div className="mt-1 text-xs font-medium leading-tight text-gray-600">
         {label}
       </div>
     </div>
@@ -87,7 +87,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className={`${playfair.className} mt-3 max-w-[320px] text-[2.2rem] font-semibold leading-[0.95] -tracking-[0.01em] text-black`}
+            className={`${playfair.className} mt-3 max-w-[320px] text-[clamp(2rem,2.5vw+1.55rem,2.3rem)] font-semibold leading-[0.95] -tracking-[0.01em] text-black`}
           >
             Professional Photography &amp; Videography Course
           </motion.h1>
@@ -156,10 +156,10 @@ export default function Hero() {
         >
           <div className="w-[135%] -ml-[17.5%]">
             <Image
-              src="/images/hero.png"
+              src="/images/hero-2026.png"
               alt="Photography"
-              width={800}
-              height={1067}
+              width={1536}
+              height={1024}
               className="h-auto w-full object-cover"
               priority
               sizes="135vw"
@@ -188,7 +188,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className={`${playfair.className} mx-auto max-w-[580px] text-center text-[2.4rem] font-semibold leading-[1.02] -tracking-[0.01em] text-black sm:text-[2.75rem]`}
+            className={`${playfair.className} mx-auto max-w-[580px] text-center text-[clamp(2.4rem,0.5vw+2.3rem,2.75rem)] font-semibold leading-[1.02] -tracking-[0.01em] text-black`}
           >
             Professional Photography &amp; Videography Course
           </motion.h1>
@@ -251,14 +251,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.74 }}
-          className="relative mt-10 h-[320px] overflow-hidden sm:h-[400px]"
+          className="relative mt-10 h-[clamp(300px,42vw,520px)] overflow-hidden"
         >
           <Image
-            src="/images/hero.png"
+            src="/images/hero-2026.png"
             alt="Photography"
             fill
             priority
-            className="scale-[1.3] object-contain object-top"
+            className="object-contain"
             sizes="100vw"
           />
         </motion.div>
@@ -267,25 +267,25 @@ export default function Hero() {
       {/* ======================================== */}
       {/* DESKTOP — Side image, left text column   */}
       {/* ======================================== */}
-      <section className="relative hidden overflow-hidden bg-white xl:block xl:min-h-[calc(100svh-72px)]">
+      <section className="relative hidden overflow-hidden bg-white xl:block xl:min-h-[max(calc(100svh_-_72px),clamp(620px,46vw,900px))]">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="absolute inset-y-0 left-[32%] right-0 hidden lg:block"
+          className="absolute inset-y-0 left-[46%] right-0 hidden lg:block"
         >
           <Image
-            src="/images/hero.png"
+            src="/images/hero-2026.png"
             alt="Photography"
             fill
-            className="origin-center scale-105 object-cover object-left"
+            className="object-contain"
             priority
-            sizes="68vw"
+            sizes="54vw"
           />
         </motion.div>
 
-        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:min-h-[calc(100svh-72px)] lg:flex-row lg:items-center">
+        <div className="container relative z-10 mx-auto px-gutter">
+          <div className="flex flex-col lg:min-h-[max(calc(100svh_-_72px),clamp(620px,46vw,900px))] lg:flex-row lg:items-center">
             <div className="w-full max-w-2xl py-6 pb-10 sm:py-8 lg:max-w-[40%] lg:py-0 xl:max-w-[42%]">
               <motion.div
                 initial={{ opacity: 0 }}
@@ -297,7 +297,7 @@ export default function Hero() {
                 Designed by Photriya Venky
               </motion.div>
 
-              <motion.h1 className="mb-3 text-[clamp(1.75rem,5.5vw,4.5rem)] font-bold leading-[1.08] tracking-tight text-black sm:mb-4">
+              <motion.h1 className="mb-3 text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold leading-[1.08] tracking-tight text-black sm:mb-4">
                 <motion.span
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -328,7 +328,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="mb-5 max-w-xl text-sm leading-relaxed text-gray-600 sm:text-[15px] lg:mb-6 lg:text-base"
+                className="mb-5 max-w-xl text-body leading-relaxed text-gray-600 lg:mb-6"
               >
                 Master Photography, Videography, &amp; Business in One Comprehensive Course. An intensive 2-month program created for aspiring photographers, content creators, and creative professionals who want to build a strong foundation and gain practical industry-ready skills.
               </motion.p>
@@ -337,7 +337,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
-                className="mb-6 hidden max-w-xl text-sm leading-relaxed text-gray-500 lg:mb-8 lg:block"
+                className="mb-6 hidden max-w-xl text-body leading-relaxed text-gray-500 lg:mb-8 lg:block"
               >
                 From understanding your camera to mastering editing techniques and learning how to market yourself as a professional, this course covers every essential aspect required to begin your creative journey.
               </motion.p>

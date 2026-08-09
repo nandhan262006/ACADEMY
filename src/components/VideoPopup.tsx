@@ -88,13 +88,13 @@ export default function VideoPopup() {
         </button>
 
         {!playing ? (
-          <div className="w-[280px] sm:w-[360px] aspect-[9/16] relative">
+          <div className="w-[clamp(280px,50vw,360px)] aspect-[9/16] relative">
             <Image
               src="/images/thumbnailpopup.png"
               alt="Video thumbnail"
               fill
               className="object-cover"
-              sizes="360px"
+              sizes="(max-width: 640px) 280px, 360px"
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/30 z-10">
               <button
@@ -115,7 +115,7 @@ export default function VideoPopup() {
             controls
             playsInline
             onEnded={fadeOut}
-            className="w-[280px] sm:w-[360px] aspect-[9/16]"
+            className="w-[clamp(280px,50vw,360px)] aspect-[9/16]"
             src="/images/popupvideo.mp4"
           />
         )}

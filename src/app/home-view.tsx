@@ -78,29 +78,34 @@ export default function HomeView() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeInUp}
         transition={{ duration: 0.6 }}
-        className="py-14 md:py-24 bg-white"
+        className="py-section-lg bg-white"
       >
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight text-center mb-8">
-            The Best Photography Academy in Hyderabad &amp; Telangana
+        <div className="container mx-auto px-gutter max-w-4xl">
+          <h2 className="text-h1 font-bold text-black tracking-tight text-center mb-8">
+            The No. 1 Photography Academy in Telangana &amp; Andhra Pradesh
           </h2>
-          <div className="space-y-4 text-sm md:text-base leading-relaxed text-gray-600">
+          <div className="space-y-4 text-body leading-relaxed text-gray-600">
             <p>
-              Photriya Academy is one of the best photography academies in
-              Hyderabad and across Telangana, offering professional photography
-              and videography courses to students from all over the state —
-              including Secunderabad, Warangal, Karimnagar, Nizamabad, and every
-              district. Whether you&apos;re a beginner looking for the best
-              photography course in Telangana or a working professional seeking
-              advanced training, our 2-month program covers camera techniques,
-              lighting, composition, editing, and business skills.
+              Photriya Academy is one of the leading photography and videography
+              academies in the Telugu states of Telangana and Andhra Pradesh,
+              located in Hyderabad. We offer professional, industry-focused
+              photography and videography training for aspiring photographers,
+              filmmakers, and working professionals from across the Telugu
+              states.
             </p>
             <p>
-              Our classroom is located in Madhapur, Hyderabad, and our live
-              online classes bring the same industry-expert training to
-              learners anywhere in Telangana and India. With 25+ years of
-              teaching experience and 3,000+ students trained, Photriya Academy
-              is trusted as a top photography institute in Telangana.
+              With practical training covering camera techniques, lighting,
+              composition, photography, videography, editing, and photography
+              business skills, Photriya Academy is designed to help students
+              turn their passion into a professional career.
+            </p>
+            <p>
+              Located in Madhapur, Hyderabad, our academy also offers live
+              online classes, making professional training accessible to
+              students across Telangana, Andhra Pradesh, and beyond. With 25+
+              years of teaching experience and 3,000+ students trained, Photriya
+              Academy aims to be the top photography academy for Telugu-speaking
+              students.
             </p>
           </div>
         </div>
@@ -112,25 +117,25 @@ export default function HomeView() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
         transition={{ duration: 0.6 }}
-        className="py-14 md:py-28 bg-black text-white"
+        className="py-section-xl bg-black text-white"
       >
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-3 md:mb-4">
+        <div className="container mx-auto px-gutter text-center">
+          <h2 className="text-h1 font-bold text-white tracking-tight mb-3 md:mb-4">
             Online &amp; Offline
           </h2>
-          <p className="text-sm md:text-base text-gray-400 max-w-xl mx-auto mb-8 md:mb-10 leading-relaxed">
+          <p className="text-body text-gray-400 max-w-xl mx-auto mb-8 md:mb-10 leading-relaxed">
             Whether you choose to learn Online or Offline, you&apos;ll follow the same comprehensive curriculum designed to help you confidently take on professional assignments.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <Link
               href="/courses/online-photography-course"
-              className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-10 bg-white text-black font-medium rounded-xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 flex items-center justify-center text-sm md:text-base"
+              className="w-full sm:w-auto h-[clamp(3rem,4vw+2rem,3.5rem)] px-[clamp(2rem,1.5vw+1.5rem,2.5rem)] bg-white text-black font-medium rounded-xl hover:scale-[1.02] hover:shadow-lg transition-all duration-300 flex items-center justify-center text-body"
             >
               Online Course
             </Link>
             <Link
               href="/courses/offline-photography-course"
-              className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-10 bg-transparent text-white font-medium rounded-xl border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 flex items-center justify-center text-sm md:text-base"
+              className="w-full sm:w-auto h-[clamp(3rem,4vw+2rem,3.5rem)] px-[clamp(2rem,1.5vw+1.5rem,2.5rem)] bg-transparent text-white font-medium rounded-xl border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all duration-300 flex items-center justify-center text-body"
             >
               Offline Course
             </Link>
@@ -144,15 +149,15 @@ export default function HomeView() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
         transition={{ duration: 0.6 }}
-        className="py-14 md:py-28 bg-gray-50"
+        className="py-section-xl bg-gray-50"
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-gutter">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
+            <h2 className="text-h1 font-bold text-black tracking-tight">
               Course Duration
             </h2>
           </motion.div>
-          <motion.div variants={staggerContainer} className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 max-w-4xl mx-auto">
+          <motion.div variants={staggerContainer} className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[clamp(0.75rem,1vw+0.5rem,1.5rem)] max-w-4xl mx-auto">
             {[
               { label: "Duration", value: "2 Months" },
               { label: "Schedule", value: "Monday – Friday" },
@@ -161,12 +166,12 @@ export default function HomeView() {
               <motion.div
                 key={item.label}
                 variants={staggerItem}
-                className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8 text-center"
+                className="bg-white rounded-2xl border border-gray-100 p-[clamp(1.5rem,2vw+0.9rem,2rem)] text-center"
               >
                 <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">
                   {item.label}
                 </p>
-                <p className="text-lg md:text-xl font-bold text-black">
+                <p className="text-h3 font-bold text-black">
                   {item.value}
                 </p>
               </motion.div>
@@ -181,31 +186,31 @@ export default function HomeView() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
         transition={{ duration: 0.6 }}
-        className="py-14 md:py-28"
+        className="py-section-xl"
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-gutter">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
+            <h2 className="text-h1 font-bold text-black tracking-tight">
               Learning Outcomes
             </h2>
-            <p className="text-sm md:text-base text-gray-500 mt-3 md:mt-4 max-w-xl mx-auto">
+            <p className="text-body text-gray-500 mt-3 md:mt-4 max-w-xl mx-auto">
               After completing this course, you will be able to:
             </p>
           </motion.div>
           <motion.div
             variants={staggerContainer}
-            className="grid sm:grid-cols-2 gap-3 md:gap-4 max-w-4xl mx-auto"
+            className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-[clamp(0.75rem,1vw+0.5rem,1rem)] max-w-4xl mx-auto"
           >
             {learningOutcomes.map((item, index) => (
               <motion.div
                 key={index}
                 variants={staggerItem}
-                className="flex items-start gap-3 p-4 md:p-5 rounded-xl border border-gray-100 hover:border-black/20 hover:shadow-sm transition-all"
+                className="flex items-start gap-3 p-[clamp(1rem,0.8vw+0.8rem,1.25rem)] rounded-xl border border-gray-100 hover:border-black/20 hover:shadow-sm transition-all"
               >
                 <span className="flex-shrink-0 w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-xs font-bold mt-0.5">
                   &#10003;
                 </span>
-                <span className="text-sm md:text-base text-gray-700 leading-relaxed">
+                <span className="text-body text-gray-700 leading-relaxed">
                   {item}
                 </span>
               </motion.div>
@@ -218,28 +223,28 @@ export default function HomeView() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="py-12 md:py-28 bg-gray-50"
+        className="py-section-xl bg-gray-50"
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-gutter">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-6 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
+            <h2 className="text-h1 font-bold text-black tracking-tight">
               Course Contents
             </h2>
           </motion.div>
           <motion.div
             variants={staggerContainer}
-            className="grid grid-cols-2 lg:grid-cols-3 gap-1.5 md:gap-3 max-w-5xl mx-auto"
+            className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[clamp(0.375rem,0.6vw+0.25rem,0.75rem)] max-w-5xl mx-auto"
           >
             {topics.map((topic, index) => (
               <motion.div
                 key={index}
                 variants={staggerItem}
-                className="flex items-center gap-2.5 p-2 md:p-4 rounded-xl bg-white border border-gray-100 hover:border-black/20 hover:shadow-md transition-all group"
+                className="flex items-center gap-2.5 p-[clamp(0.5rem,0.6vw+0.3rem,1rem)] rounded-xl bg-white border border-gray-100 hover:border-black/20 hover:shadow-md transition-all group"
               >
-                <span className="flex-shrink-0 w-6 h-6 md:w-8 md:h-8 bg-black text-white rounded-lg flex items-center justify-center text-[10px] md:text-sm font-bold">
+                <span className="flex-shrink-0 w-[clamp(1.5rem,1.5vw+0.9rem,2rem)] h-[clamp(1.5rem,1.5vw+0.9rem,2rem)] bg-black text-white rounded-lg flex items-center justify-center text-body-xs font-bold">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="text-[12px] md:text-sm font-medium text-gray-700 group-hover:text-black transition-colors leading-tight">
+                <span className="text-body-sm font-medium text-gray-700 group-hover:text-black transition-colors leading-tight">
                   {topic}
                 </span>
               </motion.div>
@@ -252,11 +257,11 @@ export default function HomeView() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="py-14 md:py-28"
+        className="py-section-xl"
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-gutter">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
+            <h2 className="text-h1 font-bold text-black tracking-tight">
               What Our Students Say
             </h2>
           </motion.div>
@@ -268,23 +273,23 @@ export default function HomeView() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="py-16 md:py-28 bg-gray-50"
+        className="py-section-xl bg-gray-50"
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-gutter">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
+            <h2 className="text-h1 font-bold text-black tracking-tight">
               Who Is This For
             </h2>
           </motion.div>
-          <motion.div variants={staggerContainer} className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
+          <motion.div variants={staggerContainer} className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[clamp(1rem,1.5vw+0.5rem,1.5rem)] max-w-4xl mx-auto">
             {audience.map((item, index) => (
               <motion.div
                 key={index}
                 variants={staggerItem}
-                className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow p-5 md:p-6"
+                className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow p-[clamp(1.25rem,1vw+1rem,1.5rem)]"
               >
-                <h3 className="text-black text-base md:text-lg font-semibold mb-1 md:mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-xs md:text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-black text-h3 font-semibold mb-1 md:mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-body-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -295,18 +300,18 @@ export default function HomeView() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="py-16 md:py-28 bg-black text-white"
+        className="py-section-xl bg-black text-white"
       >
-        <div className="container mx-auto px-4 text-center mb-8 md:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-2 md:mb-4">
+        <div className="container mx-auto px-gutter text-center mb-8 md:mb-12">
+          <h2 className="text-h1 font-bold text-white tracking-tight mb-2 md:mb-4">
             Academy Gallery
           </h2>
-          <p className="text-sm md:text-base text-gray-400 max-w-xl mx-auto">
+          <p className="text-body text-gray-400 max-w-xl mx-auto">
             Glimpses from our academy batches and events
           </p>
         </div>
 
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-gutter">
           <div className="columns-2 sm:columns-3 lg:columns-4 gap-2">
             {[
               "/images/gallery/gallery1.jpg",
@@ -358,14 +363,14 @@ export default function HomeView() {
         viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
         transition={{ duration: 0.6 }}
-        className="py-14 md:py-28 bg-gray-50"
+        className="py-section-xl bg-gray-50"
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-gutter">
           <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black tracking-tight">
+            <h2 className="text-h1 font-bold text-black tracking-tight">
               Frequently Asked Questions
             </h2>
-            <p className="text-sm md:text-base text-gray-500 mt-3 md:mt-4 max-w-xl mx-auto">
+            <p className="text-body text-gray-500 mt-3 md:mt-4 max-w-xl mx-auto">
               Everything you need to know about learning photography at Photriya Academy
             </p>
           </motion.div>
@@ -375,8 +380,8 @@ export default function HomeView() {
                 key={index}
                 className="group bg-white rounded-xl border border-gray-100 hover:border-black/20 transition-colors"
               >
-                <summary className="flex items-center justify-between p-4 md:p-5 cursor-pointer list-none">
-                  <span className="text-sm md:text-base font-semibold text-black pr-4">
+                <summary className="flex items-center justify-between p-[clamp(1rem,0.5vw+0.9rem,1.25rem)] cursor-pointer list-none">
+                  <span className="text-body font-semibold text-black pr-4">
                     {faq.q}
                   </span>
                   <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center group-open:bg-black group-open:text-white transition-colors">

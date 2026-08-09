@@ -16,8 +16,6 @@ export const WHATSAPP_NUMBER = "919618855959";
 
 export const CONTACT_EMAIL = "info@photriya.com";
 
-export const CONTACT_LOCATION = "Hyderabad, India";
-
 // Local SEO / NAP (Name, Address, Phone)
 export const BUSINESS_STREET = "Madhapur";
 export const BUSINESS_CITY = "Hyderabad";
@@ -31,7 +29,6 @@ export const GEO_LONGITUDE = 78.3915;
 
 export const FOUNDER_NAME = "Photriya Venky";
 export const FOUNDER_ROLE = "Founder & Photography Instructor";
-export const FOUNDER_EXPERIENCE_YEARS = 25;
 
 export const NEXT_BATCH_START = "2026-01-15";
 

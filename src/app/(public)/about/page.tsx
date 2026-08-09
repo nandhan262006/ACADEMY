@@ -109,35 +109,35 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       <section className="bg-black relative overflow-hidden">
-        <div className="container mx-auto px-4 py-14 sm:py-20 md:py-24 lg:py-28 relative">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight leading-tight">
+        <div className="container mx-auto px-gutter py-hero relative">
+          <h1 className="text-display font-bold text-white mb-4 tracking-tight leading-tight">
             We Don&apos;t Just Teach Photography.
             <br />
             We Build Photographers.
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed">
+          <p className="text-lead text-gray-400 max-w-2xl leading-relaxed">
             Our mission is to transform aspiring photographers into confident professionals through practical learning, real-world experience, and expert mentorship.
           </p>
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 md:py-28">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center max-w-5xl mx-auto">
+      <section className="py-section-xl">
+        <div className="container mx-auto px-gutter">
+          <div className="grid md:grid-cols-2 gap-[clamp(2.5rem,4vw+1.5rem,3.5rem)] items-center max-w-5xl mx-auto">
             <div className="relative order-2 md:order-1">
               <Image
-                src="/images/about.avif"
-                alt="Photriya Academy Classroom"
+                src="/images/Photriya%20Venky.jpg.jpeg"
+                alt="Photriya Venky"
                 width={600}
                 height={400}
                 className="rounded-2xl w-full h-auto"
               />
             </div>
             <div className="order-1 md:order-2">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-5 tracking-tight">
+              <h2 className="text-h2 font-bold text-black mb-5 tracking-tight">
                 About Photriya Academy
               </h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+              <div className="space-y-4 text-body text-gray-600 leading-relaxed">
                 <p>
                   At Photriya Academy, we believe that every great photographer starts with curiosity, passion, and the right guidance. Our mission is to transform aspiring photographers into confident professionals through practical learning, real-world experience, and expert mentorship.
                 </p>
@@ -150,14 +150,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 md:py-28 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-3xl">
+      <section className="py-section-xl bg-gray-50">
+        <div className="container mx-auto px-gutter max-w-3xl">
           <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black tracking-tight mb-3">
+            <h2 className="text-h2 font-bold text-black tracking-tight mb-3">
               Why Photriya Academy Exists
             </h2>
           </div>
-          <div className="space-y-5 text-gray-600 leading-relaxed text-base md:text-lg text-center">
+          <div className="space-y-5 text-lead text-gray-600 leading-relaxed text-center">
             <p>
               Photriya Academy was created from a simple belief: knowledge grows when it is shared.
             </p>
@@ -165,22 +165,22 @@ export default function AboutPage() {
               Rather than keeping years of experience to himself, Photriya Venky chose to give back by mentoring aspiring photographers and videographers. The academy was founded to help students learn not only the technical aspects of photography but also the practical skills, creative thinking, and professional mindset needed to succeed in the industry.
             </p>
           </div>
-          <div className="mt-10 p-8 bg-black text-white rounded-2xl text-center">
-            <p className="text-xl md:text-2xl font-medium leading-relaxed">
+          <div className="mt-10 p-[clamp(2rem,4vw+1rem,2.5rem)] bg-black text-white rounded-2xl text-center">
+            <p className="text-h3 font-medium leading-relaxed">
               &ldquo;The greatest achievement isn&apos;t building a successful career&mdash;it&apos;s helping others build theirs.&rdquo;
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 md:py-28">
-        <div className="container mx-auto px-4 max-w-5xl">
+      <section className="py-section-xl">
+        <div className="container mx-auto px-gutter max-w-5xl">
           <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black tracking-tight">
+            <h2 className="text-h2 font-bold text-black tracking-tight">
               Our Values
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-[clamp(1rem,1vw+0.8rem,1.25rem)]">
             {values.map((item) => {
               const Icon = item.icon;
               return (
@@ -208,23 +208,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 md:py-28 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-5xl">
+      <section className="py-section-xl bg-gray-50">
+        <div className="container mx-auto px-gutter max-w-5xl">
           <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black tracking-tight mb-3">
+            <h2 className="text-h2 font-bold text-black tracking-tight mb-3">
               Get in Touch
             </h2>
-            <p className="text-gray-600 max-w-xl mx-auto">
+            <p className="text-body text-gray-600 max-w-xl mx-auto">
               Visit us, call us, or follow us on social media for updates and photography tips.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-5 mb-12">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-[clamp(1rem,1vw+0.8rem,1.25rem)] mb-12">
             <a
               href="https://maps.google.com/?q=Photriya+Academy+Madhapur+Hyderabad"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white rounded-2xl border border-gray-100 p-5 hover:shadow-md transition-all flex items-center gap-4"
+              className="bg-white rounded-2xl border border-gray-100 p-[clamp(1rem,0.8vw+0.8rem,1.25rem)] hover:shadow-md transition-all flex items-center gap-4"
             >
               <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center shrink-0">
                 <MapPin className="h-5 w-5 text-white" />
@@ -237,7 +237,7 @@ export default function AboutPage() {
 
             <a
               href="tel:+919618855959"
-              className="bg-white rounded-2xl border border-gray-100 p-5 hover:shadow-md transition-all flex items-center gap-4"
+              className="bg-white rounded-2xl border border-gray-100 p-[clamp(1rem,0.8vw+0.8rem,1.25rem)] hover:shadow-md transition-all flex items-center gap-4"
             >
               <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center shrink-0">
                 <Phone className="h-5 w-5 text-white" />
@@ -250,7 +250,7 @@ export default function AboutPage() {
 
             <a
               href="mailto:info@photriya.com"
-              className="bg-white rounded-2xl border border-gray-100 p-5 hover:shadow-md transition-all flex items-center gap-4"
+              className="bg-white rounded-2xl border border-gray-100 p-[clamp(1rem,0.8vw+0.8rem,1.25rem)] hover:shadow-md transition-all flex items-center gap-4"
             >
               <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center shrink-0">
                 <Mail className="h-5 w-5 text-white" />
@@ -262,7 +262,7 @@ export default function AboutPage() {
             </a>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-100 p-8 text-center">
+          <div className="bg-white rounded-2xl border border-gray-100 p-[clamp(2rem,3vw+1.4rem,2.5rem)] text-center">
             <h3 className="font-semibold text-black mb-4">Follow Us</h3>
             <div className="flex flex-wrap justify-center gap-3">
               {socialLinks.map((link) => (

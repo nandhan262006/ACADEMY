@@ -114,11 +114,11 @@ export default function BatchesContent() {
       {/* Hero */}
       <section className="bg-navy relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="container mx-auto px-4 py-14 sm:py-20 md:py-28 lg:py-32 relative">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
+        <div className="container mx-auto px-gutter py-hero relative">
+          <h1 className="text-display font-bold text-white mb-4 tracking-tight">
             Available Batches
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
+          <p className="text-lead text-gray-300 max-w-2xl leading-relaxed">
             Choose a batch that fits your schedule. Limited seats available to
             ensure personalized attention.
           </p>
@@ -126,7 +126,7 @@ export default function BatchesContent() {
       </section>
 
       {/* Photo Banner */}
-      <section className="relative h-[200px] sm:h-[280px] md:h-[360px] lg:h-[420px] overflow-hidden">
+      <section className="relative h-[clamp(200px,26vw,420px)] overflow-hidden">
         <Image
           src="/images/gallery/gallery7.jpg"
           alt="Photography batches"
@@ -135,19 +135,19 @@ export default function BatchesContent() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-          <p className="text-white/80 text-sm md:text-base mb-1">
+        <div className="absolute bottom-0 left-0 right-0 p-[clamp(1.5rem,2vw+1rem,2.5rem)]">
+          <p className="text-white/80 text-body mb-1">
             Join our community
           </p>
-          <h2 className="text-white text-2xl md:text-4xl font-bold">
+          <h2 className="text-white text-h2 font-bold">
             Find Your Perfect Batch
           </h2>
         </div>
       </section>
 
       {/* Online / Offline Toggle */}
-      <section className="py-10 md:py-12">
-        <div className="container mx-auto px-4">
+      <section className="py-section">
+        <div className="container mx-auto px-gutter">
           <div className="flex justify-center mb-10">
             <div className="inline-flex bg-gray-100 rounded-xl p-1">
               <button
@@ -196,7 +196,7 @@ export default function BatchesContent() {
                 >
                   <div className="flex flex-col md:flex-row">
                     {/* Left info */}
-                    <div className="flex-1 p-5 md:p-6">
+                    <div className="flex-1 p-[clamp(1.25rem,0.8vw+1.1rem,1.5rem)]">
                       <div className="flex items-center gap-2 mb-3">
                         <Badge className="bg-green-100 text-green-700 border-0">
                           Upcoming
@@ -207,7 +207,7 @@ export default function BatchesContent() {
                           </Badge>
                         )}
                       </div>
-                      <h3 className="text-lg md:text-xl font-bold text-black mb-1">
+                      <h3 className="text-h3 font-bold text-black mb-1">
                         {batch.name}
                       </h3>
                       <p className="text-sm text-gray-500 mb-4">
@@ -242,7 +242,7 @@ export default function BatchesContent() {
                     </div>
 
                     {/* Right: price + CTA */}
-                    <div className="flex flex-col sm:flex-row md:flex-col items-stretch sm:items-center justify-between md:justify-center gap-3 sm:gap-4 p-5 md:p-6 md:border-l border-t md:border-t-0 border-gray-100 bg-gray-50/50 md:min-w-[200px]">
+                    <div className="flex flex-col sm:flex-row md:flex-col items-stretch sm:items-center justify-between md:justify-center gap-3 sm:gap-4 p-[clamp(1.25rem,0.8vw+1.1rem,1.5rem)] md:border-l border-t md:border-t-0 border-gray-100 bg-gray-50/50 md:min-w-[200px]">
                       <div className="text-left sm:text-center">
                         <p className="text-2xl font-bold text-black">
                           ₹{batch.price.toLocaleString("en-IN")}

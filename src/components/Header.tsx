@@ -53,7 +53,7 @@ export default function Header() {
           : "bg-transparent border-b border-transparent",
       ].join(" ")}
     >
-      <div className="max-w-7xl mx-auto h-[72px] px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto h-[72px] px-gutter flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
             src="/images/logo.png"
@@ -63,11 +63,8 @@ export default function Header() {
             className="h-[42px] w-[67px]"
             priority
           />
-          <span className="hidden sm:block text-lg font-bold leading-tight text-black">
-            Photriya
-            <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-gray-500">
-              Academy
-            </span>
+          <span className="hidden sm:block text-lg font-bold leading-tight text-black whitespace-nowrap">
+            Photriya Academy
           </span>
         </Link>
 
