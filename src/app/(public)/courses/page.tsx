@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, ArrowRight, Monitor, MapPin, Calendar } from "lucide-react";
 import { buildSeo, itemListSchema } from "@/lib/seo";
 import { getAllCourseDetails } from "@/lib/course-details";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = buildSeo({
   title: "Photography Courses in Hyderabad & Telangana",
@@ -41,11 +42,11 @@ export default async function CoursesPage() {
   const courseListJsonLd = itemListSchema([
     {
       name: "Online Photography & Videography Course",
-      url: "https://academy.photriya.com/courses/online-photography-course",
+      url: `${SITE_URL}/courses/online-photography-course`,
     },
     {
       name: "Offline Photography & Videography Course",
-      url: "https://academy.photriya.com/courses/offline-photography-course",
+      url: `${SITE_URL}/courses/offline-photography-course`,
     },
   ]);
 

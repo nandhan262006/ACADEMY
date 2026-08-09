@@ -1,4 +1,4 @@
-export const SITE_URL = "https://academy.photriya.com";
+export const SITE_URL = "https://academy-six-jet.vercel.app";
 
 export const SITE_NAME = "Photriya Academy";
 
