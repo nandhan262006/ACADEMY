@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { BookOpen } from "lucide-react";
+import { BookOpen, ExternalLink } from "lucide-react";
+import { LogoutButton } from "@/components/admin/logout-button";
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -33,6 +34,16 @@ export default function AdminLayout({
             </Link>
           ))}
         </nav>
+        <div className="p-4 border-t space-y-1">
+          <Link
+            href="/"
+            className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            <ExternalLink className="h-5 w-5" />
+            View Site
+          </Link>
+          <LogoutButton />
+        </div>
       </aside>
 
       <main className="flex-1 bg-gray-50 p-6">{children}</main>

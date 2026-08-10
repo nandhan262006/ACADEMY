@@ -1,10 +1,16 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import {
+  ADMIN_COOKIE_NAME,
+  cookieIsValid,
+} from "@/lib/admin-auth";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "";
 
 function authorized(request: NextRequest): boolean {
   if (!ADMIN_PASSWORD) return true;
+
+  if (cookieIsValid(request.cookies.get(ADMIN_COOKIE_NAME)?.value)) return true;
 
   const auth = request.headers.get("authorization") ?? "";
   const [scheme, payload] = auth.split(" ");
