@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Lock } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,6 +13,13 @@ export function AdminLoginForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const from = searchParams.get("from");
+  const redirectTo =
+    from && from.startsWith("/") && !from.startsWith("//") && from !== "/login"
+      ? from
+      : "/admin";
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -28,7 +35,7 @@ export function AdminLoginForm() {
         const data = await res.json().catch(() => null);
         throw new Error(data?.error ?? "Login failed");
       }
-      router.push("/admin");
+      router.push(redirectTo);
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");

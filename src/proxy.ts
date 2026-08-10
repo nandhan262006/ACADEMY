@@ -38,10 +38,13 @@ export function proxy(request: NextRequest) {
   if (!isAdminPage && !isWriteApi) return NextResponse.next();
   if (authorized(request)) return NextResponse.next();
 
-  return new NextResponse("Unauthorized", {
-    status: 401,
-    headers: { "WWW-Authenticate": 'Basic realm="Photriya Admin"' },
-  });
+  if (isAdminPage) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("from", pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  return new NextResponse("Unauthorized", { status: 401 });
 }
 
 export const config = {
