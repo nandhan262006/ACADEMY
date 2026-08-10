@@ -11,6 +11,7 @@ export interface CourseDetails {
   schedule: string;
   timings: string;
   location: string;
+  batchNumber: string;
   batchStartsFrom: string;
 }
 
@@ -31,6 +32,7 @@ export const DEFAULT_COURSE_DETAILS: CourseDetails[] = [
     schedule: "Monday to Friday",
     timings: "8:00 AM – 10:30 AM IST",
     location: "Live via Zoom",
+    batchNumber: "38",
     batchStartsFrom: "15 January 2026",
   },
   {
@@ -42,6 +44,7 @@ export const DEFAULT_COURSE_DETAILS: CourseDetails[] = [
     schedule: "Monday to Friday",
     timings: "8:00 AM – 10:30 AM IST",
     location: "Madhapur, Hyderabad",
+    batchNumber: "38",
     batchStartsFrom: "15 January 2026",
   },
 ];
@@ -59,6 +62,7 @@ async function ensureSchemaImpl() {
       schedule TEXT NOT NULL,
       timings TEXT NOT NULL,
       location TEXT NOT NULL,
+      batch_number TEXT NOT NULL DEFAULT '',
       batch_starts_from TEXT NOT NULL,
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     )
@@ -74,13 +78,22 @@ async function ensureSchemaImpl() {
     );
   }
 
+  const hasBatchNumber = (tableInfo.rows as Record<string, unknown>[]).some(
+    (row) => row.name === "batch_number"
+  );
+  if (!hasBatchNumber) {
+    await db.execute(
+      "ALTER TABLE course_details ADD COLUMN batch_number TEXT NOT NULL DEFAULT ''"
+    );
+  }
+
   const res = await db.execute("SELECT count(*) AS n FROM course_details");
   const n = Number(res.rows[0]?.n ?? 0);
   if (n === 0) {
     for (const c of DEFAULT_COURSE_DETAILS) {
       await db.execute({
-        sql: `INSERT INTO course_details (slug, title, mode, price, duration, schedule, timings, location, batch_starts_from)
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        sql: `INSERT INTO course_details (slug, title, mode, price, duration, schedule, timings, location, batch_number, batch_starts_from)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         args: [
           c.slug,
           c.title,
@@ -90,6 +103,7 @@ async function ensureSchemaImpl() {
           c.schedule,
           c.timings,
           c.location,
+          c.batchNumber,
           c.batchStartsFrom,
         ],
       });
@@ -99,6 +113,10 @@ async function ensureSchemaImpl() {
       await db.execute({
         sql: "UPDATE course_details SET price = ? WHERE slug = ? AND price = 0",
         args: [c.price, c.slug],
+      });
+      await db.execute({
+        sql: "UPDATE course_details SET batch_number = ? WHERE slug = ? AND batch_number = ''",
+        args: [c.batchNumber, c.slug],
       });
     }
   }
@@ -121,6 +139,7 @@ function mapRow(row: Record<string, unknown>): CourseDetails {
     schedule: String(row.schedule),
     timings: String(row.timings),
     location: String(row.location),
+    batchNumber: String(row.batch_number),
     batchStartsFrom: String(row.batch_starts_from),
   };
 }
@@ -128,7 +147,7 @@ function mapRow(row: Record<string, unknown>): CourseDetails {
 export async function getAllCourseDetails(): Promise<CourseDetails[]> {
   await ensureSchema();
   const res = await db.execute(
-    "SELECT slug, title, mode, price, duration, schedule, timings, location, batch_starts_from FROM course_details ORDER BY mode DESC"
+    "SELECT slug, title, mode, price, duration, schedule, timings, location, batch_number, batch_starts_from FROM course_details ORDER BY mode DESC"
   );
   return (res.rows as unknown as Record<string, unknown>[]).map(mapRow);
 }
@@ -138,7 +157,7 @@ export async function getCourseDetails(
 ): Promise<CourseDetails | null> {
   await ensureSchema();
   const res = await db.execute({
-    sql: `SELECT slug, title, mode, price, duration, schedule, timings, location, batch_starts_from
+    sql: `SELECT slug, title, mode, price, duration, schedule, timings, location, batch_number, batch_starts_from
           FROM course_details WHERE slug = ?`,
     args: [slug],
   });
@@ -155,13 +174,14 @@ export async function updateCourseDetails(
 
   await db.execute({
     sql: `UPDATE course_details
-          SET duration = ?, schedule = ?, timings = ?, location = ?, batch_starts_from = ?, price = ?, updated_at = datetime('now')
+          SET duration = ?, schedule = ?, timings = ?, location = ?, batch_number = ?, batch_starts_from = ?, price = ?, updated_at = datetime('now')
           WHERE slug = ?`,
     args: [
       input.duration,
       input.schedule,
       input.timings,
       input.location,
+      input.batchNumber,
       input.batchStartsFrom,
       input.price,
       slug,
@@ -184,6 +204,7 @@ export function parseCourseDetailsInput(body: unknown): {
     "schedule",
     "timings",
     "location",
+    "batchNumber",
     "batchStartsFrom",
   ];
   const value = {} as CourseDetailsInput;

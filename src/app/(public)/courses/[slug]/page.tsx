@@ -12,6 +12,7 @@ import {
   Calendar,
   MapPin,
   Monitor,
+  Hash,
   BookOpen,
   Camera,
   Video,
@@ -428,13 +429,14 @@ export default async function CourseDetailPage({
                   <h3 className="text-lg font-bold text-navy">Course Details</h3>
                   <div className="space-y-4">
                     {[
+                      { icon: Hash, label: "Batch Number", value: details?.batchNumber ?? "38" },
+                      { icon: Calendar, label: "Batch Starts From", value: details?.batchStartsFrom ?? "15 January 2026" },
                       { icon: BookOpen, label: "Duration", value: details?.duration ?? "2 Months" },
                       { icon: Calendar, label: "Schedule", value: details?.schedule ?? "Monday to Friday" },
                       { icon: Clock, label: "Timings", value: details?.timings ?? "8:00 AM – 10:30 AM IST" },
                       course.mode === "online"
                         ? { icon: Monitor, label: "Mode", value: details?.location ?? "Live via Zoom" }
                         : { icon: MapPin, label: "Location", value: details?.location ?? "Madhapur, Hyderabad" },
-                      { icon: Calendar, label: "Batch Starts From", value: details?.batchStartsFrom ?? "15 January 2026" },
                     ].map((item) => (
                       <div key={item.label} className="flex items-center gap-3">
                         <item.icon className="h-4 w-4 text-gray-400 shrink-0" />

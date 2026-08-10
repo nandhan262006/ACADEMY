@@ -20,6 +20,7 @@ const FIELDS: { key: Exclude<keyof CourseDetailsInput, "price">; label: string }
   { key: "schedule", label: "Schedule" },
   { key: "timings", label: "Timings" },
   { key: "location", label: "Location" },
+  { key: "batchNumber", label: "Batch Number" },
   { key: "batchStartsFrom", label: "Batch Starts From" },
 ];
 
@@ -29,6 +30,7 @@ function toInput(course: CourseDetails): CourseDetailsInput {
     schedule: course.schedule,
     timings: course.timings,
     location: course.location,
+    batchNumber: course.batchNumber,
     batchStartsFrom: course.batchStartsFrom,
     price: course.price,
   };

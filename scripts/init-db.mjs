@@ -15,6 +15,7 @@ const DEFAULT_COURSE_DETAILS = [
     schedule: "Monday to Friday",
     timings: "8:00 AM – 10:30 AM IST",
     location: "Live via Zoom",
+    batchNumber: "38",
     batchStartsFrom: "15 January 2026",
   },
   {
@@ -26,6 +27,7 @@ const DEFAULT_COURSE_DETAILS = [
     schedule: "Monday to Friday",
     timings: "8:00 AM – 10:30 AM IST",
     location: "Madhapur, Hyderabad",
+    batchNumber: "38",
     batchStartsFrom: "15 January 2026",
   },
 ];
@@ -41,6 +43,7 @@ async function main() {
       schedule TEXT NOT NULL,
       timings TEXT NOT NULL,
       location TEXT NOT NULL,
+      batch_number TEXT NOT NULL DEFAULT '',
       batch_starts_from TEXT NOT NULL,
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     )
@@ -55,8 +58,8 @@ async function main() {
 
   for (const c of DEFAULT_COURSE_DETAILS) {
     await db.execute({
-      sql: `INSERT INTO course_details (slug, title, mode, price, duration, schedule, timings, location, batch_starts_from)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      sql: `INSERT INTO course_details (slug, title, mode, price, duration, schedule, timings, location, batch_number, batch_starts_from)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       args: [
         c.slug,
         c.title,
@@ -66,6 +69,7 @@ async function main() {
         c.schedule,
         c.timings,
         c.location,
+        c.batchNumber,
         c.batchStartsFrom,
       ],
     });
